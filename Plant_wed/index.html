@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="關於植栽與簡約的網站!">
+    <meta name="keywords" content="植栽,盆栽,簡約,極簡主義,白色,極簡,生活,龜背芋,minimalist,life,white">
+    <link rel="stylesheet" href="./scss/style.css">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="./img/plant.ico" type="image/x-icon"/>
+    <title>綠意盎然 - Plants_Web</title>
+</head>
+<body class="scrollbar text_no_select">
+    <header>
+        <div class="banner">
+            <h1>Plants Wed</h1>
+            <p>綠意從盆栽中滋養，自莖葉散發而出，融於愜意的氛圍裡。</p>
+            <p>用植栽的盎然，來點綴簡約的生活環境。</p>
+            <p>為統調的純白，帶來生機。</p>
+            <div class="button" id="start">
+                <span>開始吧!</span>
+                <div class="button_bg"></div>
+            </div>
+        </div>
+    </header>
+<!---------------------->
+    <nav>
+        <div class="iocn"></div>
+        <ul>
+            <li>前言<div class="nav_bar"></div></li>
+            <li><span>植栽介紹</span><div class="nav_bar"></div><div class="options_box">
+                <div class="option">龜背芋</div>
+                <div class="option">黃金葛</div>
+            </div></li>
+            <li>關於本站<div class="nav_bar"></div></li>
+            <li>設定<div class="nav_bar"></div></li>
+        </ul>
+    </nav>
+<!---------------------->
+    <div id="ScrollTop">Top</div><!--回頂端 button-->
+    <div class="down_button float">↓</div><!--往下瀏覽 button-->
+<!---------------------->
+    <aside>
+        <div class="setting_cover"></div>
+        <div class="setting setting_hide">
+            <div class="close_button"><span>←</span></div>
+            <h2>設定</h2>
+            <div class="setting_box">
+                <div class="setting_item" id="show_scroll_bar">
+                    <div class="sw_botton sw_button_close"><div class="button_ball sw_button_ball_close"></div></div>
+                    <div class="setting_item_name sw_button_close_text">顯示捲動軸</div>
+                </div>
+                <div class="setting_item" id="scan_button">
+                    <div class="sw_botton"><div class="button_ball"></div></div>
+                    <div class="setting_item_name">"往下瀏覽"按鈕</div>
+                </div>
+                <div class="setting_item" id="text_select">
+                    <div class="sw_botton sw_button_close"><div class="button_ball sw_button_ball_close"></div></div>
+                    <div class="setting_item_name sw_button_close_text">文字選取</div>
+                </div>
+                <div class="setting_item" id="save_img">
+                    <div class="sw_botton sw_button_close"><div class="button_ball sw_button_ball_close"></div></div>
+                    <div class="setting_item_name sw_button_close_text">右鍵儲存圖片</div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+<!---------------------->
+    <main>
+        <section>
+        <div class="about">
+            <h2>前言</h2>
+            <div class="text_M">
+                <p>歡迎光臨本站。</p>
+                <p>這個網站將帶你瀏覽許多小巧可愛的植栽</p>
+                <p>看看它們如何用小小身軀，去美化你我的生活環境</p>
+                <p><span style="font-weight:bold;color:rgb(177, 11, 11);cursor:no-drop;">※未經許可，請勿擅自複製轉載。</span></p>
+            </div>
+        </div>
+        </section>
+<!---------------------->
+        <section>
+            <h2>植栽介紹</h2>
+            <section class="introduction">
+                <div class="text_L">
+                <h3>龜背芋 Monstera deliciosa</h3>
+                <p>龜背芋適應性強，喜歡溫暖、潮濕也耐陰、耐旱。</p>
+                <p>常綠藤本植物，葉革質，莖幹粗壯，下部常生有褐色氣生根。
+                    幼葉呈心形，植株在生長過程中的新發葉片逐漸會有不規則的羽狀裂口，其因像龜背而得名。
+                    花為黃白色的肉穗花序，外具白色的佛焰苞。果實為緑色柱狀聚果。
+                    果實有鳳梨香氣，但含草酸鈣（蓚酸）結晶，會刺激皮膚及黏膜組織，帶來些微刺癢的不適感。
+                    大量接觸的話，可能會讓皮膚發紅搔癢，黏膜腫大發炎，故小心寵物誤食。
+                </p>
+                <a href="https://zh.wikipedia.org/wiki/%E9%BE%9F%E8%83%8C%E7%AB%B9" target="_blank" rel="noopener noreferrer">
+                    <div class="button" id="plant_1">
+                        <span>更多介紹</span>
+                        <div class="button_bg"></div>
+                    </div>
+                </a>
+                </div>
+                <div class="plant_img">
+                <img src="./img/plant_1.jpg" alt="龜背芋">
+                <div class="img_cover"></div>
+                </div>
+            </section>
+    <!-------------------------------------->
+            <section class="introduction">
+                <div class="plant_img">
+                    <img src="./img/plant_2.jpg" alt="黃金葛">
+                    <div class="img_cover"></div>
+                </div>
+                <div class="text_L">
+            <h3>黃金葛 Epipremnum aureum</h3>
+            <p>黃金葛喜蔭蔽潮濕的環境，生命力極強，黑暗無光亦能生存。</p>
+            <p>現作為觀葉植物而被廣泛栽培於人類居住和活動場所，因其枝莖善於攀緣的特性，適宜吊盆栽植或植於圖騰柱上。
+                黃金葛屬高大藤本，靠莖部攀牆，節間具縱向槽狀；較多分枝，枝懸垂。幼枝呈鞭狀，細長，粗3－4公釐，節間長15－20公分；
+                葉柄長8－10公分，兩側鞘狀部份達頂部；鞘狀部份呈皮革質感，下部每側寬近1公分，
+                向上漸狹；下部葉片大，長5－10公分，上部的長6－8公分，紙質感，寬卵形，
+                短漸尖，葉基部呈心形，寬6.5公分。
+            </p>
+            <a href="https://zh.wikipedia.org/wiki/%E7%BB%BF%E8%90%9D" target="_blank" rel="noopener noreferrer">
+                <div class="button" id="plant_1">
+                    <span>更多介紹</span>
+                    <div class="button_bg"></div>
+                </div>
+            </a>
+                </div>
+            </section>
+        </section>
+<!---------------------->
+        <section>
+            <h2 style="border: none;">關於本站</h2>
+            <div class="ab_t">
+                <div class="text_L">
+                    <dl>
+                        <h3>作者</h3>
+                        <dt> 姓名 ：董柏均</dt>
+                        <dt>職業 ：學生</dt>
+                        <dt> 學號 ：11014085</dt>
+                        <dt>mail ：cspss9803@gmail.com</dt>
+                    </dl>
+                </div>
+                <div class="text_L">
+                    <dl>
+                        <h3>使用資源</h3>
+                        <dt>Banner ：<a href="https://photodune.net/item/monstera-deliciosa-or-swiss-cheese-plant-in-a-gray-concrete-flower-pot/30356479" target="_blank">橫幅景圖</a></dt>
+                        <dt>龜背芋 ：<a href="https://cdn02.pinkoi.com/product/7zbUWmA7/0/1/800x0.jpg" target="_blank">龜背芋圖片</a></dt>
+                        <dt>黃金葛 ：<a href="https://photo.518.com.tw/selfmedia/articles/1212/162264076754499.jpeg" target="_blank">黃金葛圖片</a></dt>
+                        <dt>Logo   ：<a href="https://www.flaticon.com/search?word=leaves&type=icon&order_by=4" target="_blank">icon 圖片資源</a></dt>
+                        <dt>龜背芋 ：<a href="https://zh.wikipedia.org/wiki/%E9%BE%9F%E8%83%8C%E7%AB%B9" target="_blank">龜背芋 wiki</a></dt>
+                        <dt>黃金葛 ：<a href="https://zh.wikipedia.org/wiki/%E7%BB%BF%E8%90%9D" target="_blank">黃金葛 wiki</a></dt>
+                    </dl>
+                </div>
+            </div>
+        </section>
+    </main>
+<!---------------------->
+    <footer>
+    <p>Copyright © 綠意盎然-Plants_Web All Rights Reserved.</p>
+    </footer>
+</body>
+<script src="./js/main.js"></script>
+</html>
