@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh_tw">
+<head>
+    <meta charset="UTF-8">
+    <title>課表</title>
+<style>
+    #map_cover{
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 5;
+        background-color: #fff;
+    }
+    #map{
+        position: absolute;
+        z-index: 6;
+    }
+    #map_close_button text{
+        fill: rgb(0, 0, 0);
+        transition: 0.4s;
+    }
+    #map_close_button:hover text{
+        fill: rgb(226, 15, 15);
+    }
+    .disappear{display: none !important;}
+</style>
+<style>
+*{padding: 0;font-family: '微軟正黑體';user-select: none;}
+.box{
+    width: 665px;
+    height: 902.5px;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.schedule_box{
+    display: grid;
+    grid-template-columns: [A1]1fr [A2]1fr [A3]1fr [A5]1fr [A6]1fr [A7]1fr;
+    grid-template-rows: [B1]1fr [B2]1fr [B3]1fr [B4]1fr [B5]1fr [B6]1fr [B7]1fr [B8]1fr [B9]1fr [B10]1fr [B11]1fr;
+}
+.menu_button{
+    font-size: 30px;
+    background-color: rgb(235, 235, 235);
+    transition: 0.4s;
+    cursor: pointer;
+}
+.menu_button:hover{background-color: rgb(215, 215, 215);}
+.item{border: solid 0.5px #ccc;position: relative;}
+.class{cursor: pointer;transition: 0.4s;}
+.class:hover{background-color: rgb(235, 235, 235);}
+.MF{
+    grid-column-start: 5;
+    grid-column-end:  6;
+    grid-row-start: 2;
+    grid-row-end: 5;
+}
+.EN{
+    grid-column-start: 6;
+    grid-column-end:  7;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+.PG{
+    grid-column-start: 4;
+    grid-column-end:  5;
+    grid-row-start: 3;
+    grid-row-end: 6;
+}
+.SET{
+    grid-column-start: 2;
+    grid-column-end:  7;
+    grid-row-start: 6;
+    grid-row-end: 7;
+}
+.SET .text{font-size: 20px;letter-spacing: 0.5em;font-weight: 100;}
+.CI{
+    grid-column-start: 2;
+    grid-column-end:  3;
+    grid-row-start: 7;
+    grid-row-end: 10;
+}
+.SK{
+    grid-column-start: 3;
+    grid-column-end:  4;
+    grid-row-start: 7;
+    grid-row-end: 9;
+}
+.WD{
+    grid-column-start: 5;
+    grid-column-end:  6;
+    grid-row-start: 7;
+    grid-row-end: 9;
+}
+.PE{
+    grid-column-start: 6;
+    grid-column-end:  7;
+    grid-row-start: 7;
+    grid-row-end: 9;
+}
+.COM{
+    grid-column-start: 6;
+    grid-column-end:  7;
+    grid-row-start: 9;
+    grid-row-end: 12;
+}
+.text{
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    letter-spacing: 0.2em;
+}
+.place{line-height: 2em;}
+@media screen and (max-width: 800px){
+    .box{
+        width: 90%;
+        height: 90vh;
+    }
+    svg{
+        transform: translateX(-50%);
+    }
+    .map_content{transform: scale(0.7);}
+    .schedule_box{font-size: 8px;}
+    .SET .text{font-size: 14px;}
+}
+</style>
+<style>
+    .st0{fill:#CCCCCC;}
+    .st1{font-family:'微軟正黑體'; font-weight: bold;}
+    .st2{font-size:21.2578px;}
+    .st3{font-size:15.706px;}
+    .st4{font-size:16.5352px;}
+    .st5{font-size:45.7483px;}
+    .st6{clip-path:url(#SVGID_2_);}
+    .st7{fill:#3F3F3F;}
+    .st8{clip-path:url(#SVGID_4_);}
+    .st9{fill:#FFFFFF;}
+    .st10{font-size:17.4303px;}
+    .st11{font-size:32.1648px;}
+    .st12{font-size:36.1187px;}
+    .st13{font-size:37.8632px;}
+    .st14{font-size:26.5877px;}
+    .st15{clip-path:url(#SVGID_6_);}
+    .st16{clip-path:url(#SVGID_8_);}
+    .st17{clip-path:url(#SVGID_10_);}
+    .st18{clip-path:url(#SVGID_12_);}
+    .st19{font-size:21.6118px;}
+    .st20{fill:#8E8E8E;}
+    .st21{opacity:0;}
+    .st22{font-family:'AdobeMingStd-Light-B5pc-H';}
+    .st23{font-size:47.7235px;}
+    .map_object{opacity: 0.3;transition:opacity 0.4s, fill 0.4s;cursor: pointer;}
+    .map_object:hover{opacity: 1;}
+    .map_object:hover path{fill: rgb(235, 192, 177);}
+    .map_object_focus{opacity: 1 !important;}
+    .map_object_focus_path{fill: rgb(235, 192, 177) !important;}
+</style>
+</head>
+<body>
+    <div class="schedule_box box">
+        <div class="item menu_button"  onclick="open_map()"><div class="text">≡</div></div>
+        <div class="item class"><div class="text">MO</div></div>
+        <div class="item class"><div class="text">Tu</div></div>
+        <div class="item class"><div class="text">We</div></div>
+        <div class="item class"><div class="text">Tu</div></div>
+        <div class="item class"><div class="text">Fi</div></div>
+        <div class="item class"><div class="text"><div class="timeA">08:30</div><div class="time_">-</div><div class="timeB">09:20</div></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item MF class" onclick="open_map('M')"><div class="text">多媒體概論<br><span class="place">M-515</span></div></div>
+        <div class="item EN class" onclick="open_map('T1')"><div class="text">英文<br><span class="place">T1-605</span></div></div>
+        <div class="item class"><div class="text"><div class="timeA">09:25</div><div class="time_">-</div><div class="timeB">10:15</div></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item PG class" onclick="open_map('G')"><div class="text">攝影<br><span class="place">G-206</span></div></div>
+        <div class="item class"><div class="text"><div class="timeA">10:25</div><div class="time_">-</div><div class="timeB">11:15</div></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item class"><div class="text"><div class="timeA">11:20</div><div class="time_">-</div><div class="timeB">12:10</div></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item class" onclick="open_map('M')"><div class="text">網頁設計<br><span class="place">M-516</span></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item class"><div class="text"><div class="timeA">12:30</div><div class="time_">-</div><div class="timeB">13:20</div></div></div>
+        <div class="item SET"><div class="text">siesta</div></div>
+        <div class="item class"><div class="text"><div class="timeA">13:30</div><div class="time_">-</div><div class="timeB">14:20</div></div></div>
+        <div class="item CI class" onclick="open_map('T2')"><div class="text">創意概論<br><span class="place">T2-316</span></div></div>
+        <div class="item SK class" onclick="open_map('D')"><div class="text">素描<br><span class="place">D-301</span></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item WD class" onclick="open_map('M')"><div class="text">網頁設計<br><span class="place">M-516</span></div></div>
+        <div class="item PE class" onclick="open_map()"><div class="text">體育</div></div>
+        <div class="item class"><div class="text"><div class="timeA">14:30</div><div class="time_">-</div><div class="timeB">15:20</div></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item class"><div class="text"><div class="timeA">15:30</div><div class="time_">-</div><div class="timeB">16:20</div></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item class"><div class="text"><div class="timeA">16:30</div><div class="time_">-</div><div class="timeB">17:20</div></div></div>
+        <div class="item COM class" onclick="open_map('T2')"><div class="text">計算機概論<br><span class="place">T2-507</span></div></div>
+        <div class="item class" onclick="open_map('T2')"><div class="text">資管人的規劃<br><span class="place">T2-108</span></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item class"><div class="text"><div class="timeA">17:30</div><div class="time_">-</div><div class="timeB">18:20</div></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item class" onclick="open_map('D')"><div class="text"></div><div class="text">素描<br><span class="place">D-301</span></div></div>
+        <div class="item"><div class="text"></div></div>
+        <div class="item"><div class="text"></div></div>
+    </div>
+<!------------------------------------------->
+    <div id="map_cover" class="disappear"></div>
+    <svg class="box disappear" id="map">
+        <g class="map_content">
+            <g class="map_object" id="map_playground">
+            <path class="st0" d="M145.27,392.66h-1.37c-35.04,0-63.44-28.4-63.44-63.44V208.1c0-35.04,28.4-63.44,63.44-63.44h1.37
+                c35.04,0,63.44,28.4,63.44,63.44v121.12C208.71,364.26,180.31,392.66,145.27,392.66z"/>
+            <text transform="matrix(1 0 0 1 114.9465 274.2539)" class="st1 st2">運動場</text>
+            </g>
+            <g class="map_object" id="map_plane">
+            <path class="st0" d="M147.83,138.99H49.16c-5.65,0-10.24-4.58-10.24-10.24V70.64c0-5.65,4.58-10.24,10.24-10.24h98.67
+                c5.65,0,10.24,4.58,10.24,10.24v58.12C158.06,134.41,153.48,138.99,147.83,138.99z"/>
+            <text transform="matrix(1 0 0 1 47.961 108.0014)" class="st1 st2">飛機修護停</text>
+            </g>
+            <g class="map_object" id="map_bv">
+            <path class="st0" d="M273.7,355.63h-47.76c-5.65,0-10.24-4.58-10.24-10.24V235.93c0-5.65,4.58-10.24,10.24-10.24h47.76
+                c5.65,0,10.24,4.58,10.24,10.24V345.4C283.93,351.05,279.35,355.63,273.7,355.63z"/>
+            <text transform="matrix(1 0 0 1 242.1572 264.8244)"><tspan x="0" y="0" class="st1 st3">籃</tspan><tspan x="0" y="18.85" class="st1 st3">排</tspan><tspan x="0" y="37.69" class="st1 st3">球</tspan><tspan x="0" y="56.54" class="st1 st3">場</tspan></text>
+            </g>
+            <g class="map_object" id="map_R_square">
+            <path class="st0" d="M460.05,462.01h-83c-5.65,0-10.24-4.58-10.24-10.24v-10.24c0-5.65,4.58-10.24,10.24-10.24h83
+                c5.65,0,10.24,4.58,10.24,10.24v10.24C470.28,457.43,465.7,462.01,460.05,462.01z"/>
+            <text transform="matrix(1 0 0 1 388.345 451.3283)" class="st1 st4">紅磚廣場</text>
+            </g>
+            <g class="map_object" id="map_D_square">
+            <path class="st0" d="M422.23,294.54c5.65,0,10.24-4.58,10.24-10.24v-66.35c0-5.65-4.58-10.24-10.24-10.24h-20
+                c-5.65,0-10.24,4.58-10.24,10.24v66.35c0,5.65,4.58,10.24,10.24,10.24h10v16.11c-3.14,0.98-5.42,3.91-5.42,7.38
+                s2.28,6.39,5.42,7.38v32.21c-5.7,1.75-9.85,7.06-9.85,13.33c0,7.7,6.24,13.95,13.95,13.95s13.95-6.24,13.95-13.95
+                c0-7.3-5.61-13.28-12.75-13.89v-31.9c2.79-1.17,4.75-3.92,4.75-7.13s-1.96-5.97-4.75-7.13v-16.35H422.23z"/>
+            <text transform="matrix(1 0 0 1 394.4479 249.3711)"><tspan x="0" y="0" class="st1 st4">海豚 </tspan><tspan x="0" y="19.84" class="st1 st4">廣場</tspan></text>
+            </g>
+            <g class="map_object" id="map_bus">
+            <path class="st0" d="M340.36,714.8h-40.37c-5.65,0-10.24-4.58-10.24-10.24v-44.47c0-5.65,4.58-10.24,10.24-10.24h40.37
+                c5.65,0,10.24,4.58,10.24,10.24v44.47C350.6,710.22,346.01,714.8,340.36,714.8z"/>
+            <text transform="matrix(1 0 0 1 295.9148 686.7635)" class="st1 st4">公車站</text>
+            </g>
+            <g class="map_object" id="map_Y_square">
+            <path class="st0" d="M186.46,443.25h-66.12c-5.65,0-10.24-4.58-10.24-10.24v-22.24c0-5.65,4.58-10.24,10.24-10.24h66.12
+                c5.65,0,10.24,4.58,10.24,10.24v22.24C196.7,438.67,192.11,443.25,186.46,443.25z"/>
+            <text transform="matrix(1 0 0 1 120.9083 420.3168)" class="st1 st4">青春廣場</text>
+            <text transform="matrix(1 0 0 1 129.9677 437.3756)" class="st1 st4">籃球場</text>
+            </g>
+            <g class="map_object" id="map_sc1">
+            <path class="st0" d="M632.46,568.04h-20.29c-5.65,0-10.24-4.58-10.24-10.24V310.74c0-5.65,4.58-10.24,10.24-10.24h20.29
+                c5.65,0,10.24,4.58,10.24,10.24V557.8C642.7,563.46,638.11,568.04,632.46,568.04z"/>
+            <text transform="matrix(1 0 0 1 610.9311 400.2668)"><tspan x="0" y="0" class="st1 st2">二 </tspan><tspan x="0" y="25.51" class="st1 st2"> </tspan><tspan x="0" y="51.02" class="st1 st2">停</tspan></text>
+            </g>
+            <g class="map_object" id="map_sc2">
+            <path class="st0" d="M391.28,621.95h-39.97c-5.65,0-10.24-4.58-10.24-10.24v-56.59c0-5.65,4.58-10.24,10.24-10.24h39.97
+                c5.65,0,10.24,4.58,10.24,10.24v56.59C401.52,617.37,396.94,621.95,391.28,621.95z"/>
+            <text transform="matrix(1 0 0 1 349.1541 592.3212)" class="st1 st2">一停</text>
+            </g>
+            <g class="map_object" id="map_sc3">
+            <path class="st0" d="M350.46,811.6h-54.71c-5.65,0-10.24-4.58-10.24-10.24v-74.82c0-5.65,4.58-10.24,10.24-10.24h54.71
+                c5.65,0,10.24,4.58,10.24,10.24v74.82C360.7,807.02,356.11,811.6,350.46,811.6z"/>
+            <text transform="matrix(1 0 0 1 301.6844 767.2122)" class="st1 st2">三停</text>
+            </g>
+            <g class="map_object" id="map_sc4">
+            <path class="st0" d="M273.08,736.15h-47.92c-5.65,0-10.24-4.58-10.24-10.24v-58.68c0-5.65,4.58-10.24,10.24-10.24h47.92
+                c5.65,0,10.24,4.58,10.24,10.24v58.68C283.31,731.57,278.73,736.15,273.08,736.15z"/>
+            <text transform="matrix(1 0 0 1 228.168 704.4301)" class="st1 st2">四停</text>
+            </g>
+            <g class="map_object" id="map_car1">
+            <path class="st0" d="M489.11,656.99h-43.59c-5.65,0-10.24-4.58-10.24-10.24v-93c0-5.65,4.58-10.24,10.24-10.24h43.59
+                c5.65,0,10.24,4.58,10.24,10.24v93C499.34,652.41,494.76,656.99,489.11,656.99z"/>
+            <text transform="matrix(1 0 0 1 444.2129 602.6741)" class="st1 st2">一汽</text>
+            </g>
+            <g class="map_object" id="map_car2">
+            <path class="st0" d="M281.99,628.89h-84.94c-5.65,0-10.24-4.58-10.24-10.24v-74.94c0-5.65,4.58-10.24,10.24-10.24h84.94
+                c5.65,0,10.24,4.58,10.24,10.24v74.94C292.23,624.31,287.64,628.89,281.99,628.89z"/>
+            <text transform="matrix(1 0 0 1 218.6906 589.0709)" class="st1 st2">二汽</text>
+            </g>
+            <g class="map_object" id="map_T1">
+            <path id="map_T1_path" class="st0" d="M378.7,294.54h-54.59c-5.65,0-10.24-4.58-10.24-10.24v-66.35c0-5.65,4.58-10.24,10.24-10.24h54.59
+                c5.65,0,10.24,4.58,10.24,10.24v66.35C388.93,289.96,384.35,294.54,378.7,294.54z"/>
+            <text transform="matrix(1 0 0 1 330.1689 284.1914)" class="st1 st2">教學</text>
+            <text transform="matrix(1 0 0 1 320.6727 251.1301)" class="st1 st5">T1</text>
+            </g>
+            <g class="map_object" id="map_D">
+            <path id="map_D_path" class="st0" d="M504.34,294.54H445.4c-5.65,0-10.24-4.58-10.24-10.24v-66.35c0-5.65,4.58-10.24,10.24-10.24h58.94
+                c5.65,0,10.24,4.58,10.24,10.24v66.35C514.58,289.96,510,294.54,504.34,294.54z"/>
+            <text transform="matrix(1 0 0 1 451.9098 280.5027)" class="st1 st2">設計</text>
+            <text transform="matrix(1 0 0 1 455.4962 251.1301)" class="st1 st5">D</text>
+            </g>
+            <g class="map_object" id="map_T2">
+            <path id="map_T2_path" class="st0" d="M632.46,294.54h-74.47c-5.65,0-10.24-4.58-10.24-10.24v-66.35c0-5.65,4.58-10.24,10.24-10.24h74.47
+                c5.65,0,10.24,4.58,10.24,10.24v66.35C642.7,289.96,638.11,294.54,632.46,294.54z"/>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <defs>
+                                    
+                                        <ellipse id="SVGID_1_" transform="matrix(0.4641 -0.8858 0.8858 0.4641 54.387 647.8486)" cx="562.59" cy="278.98" rx="11.68" ry="11.68"/>
+                                </defs>
+                                <clipPath id="SVGID_2_">
+                                    <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+                                </clipPath>
+                                <g class="st6">
+                                    
+                                        <ellipse transform="matrix(0.4641 -0.8858 0.8858 0.4641 54.3869 647.8484)" class="st7" cx="562.59" cy="278.98" rx="11.68" ry="11.68"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <defs>
+                                    
+                                        <ellipse id="SVGID_3_" transform="matrix(0.4641 -0.8858 0.8858 0.4641 54.387 647.8486)" cx="562.59" cy="278.98" rx="11.68" ry="11.68"/>
+                                </defs>
+                                <clipPath id="SVGID_4_">
+                                    <use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
+                                </clipPath>
+                                <g class="st8">
+                                    <path class="st9" d="M561.25,278.25c0.45-2.1-1.05-4.19-3.14-4.49c-2.1-0.45-4.19,1.05-4.49,3.14c-0.15,0.45-0.15,0.9,0,1.5
+                                        c-0.15,1.95,1.05,3.89,2.99,4.49l-1.5,12.88c0,0.15,0,0.15,0,0.3c0,1.2,1.05,2.25,2.25,2.25s2.25-1.05,2.25-2.25v-0.15
+                                        l-1.2-12.88C560.35,281.84,561.4,280.19,561.25,278.25z"/>
+                                    <path class="st9" d="M570.83,273.6c-0.45,0-0.75,0.3-0.75,0.75l0,0v3.74c-0.15,0.45-0.45,0.75-0.9,0.6
+                                        c-0.3,0-0.6-0.3-0.6-0.6v-3.74c-0.15-0.45-0.45-0.75-0.9-0.6c-0.3,0-0.6,0.3-0.6,0.6v3.74c-0.15,0.45-0.45,0.75-0.9,0.6
+                                        c-0.3,0-0.6-0.3-0.6-0.6v-3.74c-0.15-0.45-0.45-0.75-0.9-0.6c-0.3,0-0.6,0.3-0.6,0.6v4.49c0,1.8,1.2,3.29,2.99,3.74
+                                        l-1.5,12.73c0,0,0,0.15,0,0.3c0,1.2,1.05,2.25,2.25,2.25s2.25-1.05,2.25-2.25l0,0v-0.15l-1.2-12.88
+                                        c1.65-0.45,2.7-1.95,2.7-3.59v-4.49C571.73,274.05,571.43,273.6,570.83,273.6C570.98,273.6,570.98,273.6,570.83,273.6z"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <text transform="matrix(1 0 0 1 581.8982 284.1914)" class="st1 st2">管理</text>
+            <text transform="matrix(1 0 0 1 573.3785 251.1302)" class="st1 st5">T2</text>
+            </g>
+            <g class="map_object" id="map_L">
+            <path class="st0" d="M588.94,406.62h-34.82c-5.65,0-10.24-4.58-10.24-10.24v-87.18c0-5.65,4.58-10.24,10.24-10.24h34.82
+                c5.65,0,10.24,4.58,10.24,10.24v87.18C599.18,402.03,594.6,406.62,588.94,406.62z"/>
+            <text transform="matrix(1 0 0 1 545.2967 381.7529)" class="st1 st10">圖書館</text>
+            <text transform="matrix(1 0 0 1 559.5975 348.3225)" class="st1 st5">L</text>
+            </g>
+            <g class="map_object" id="map_G">
+            <path id="map_G_path" class="st0" d="M587.99,519.6h-34.82c-5.65,0-10.24-4.58-10.24-10.24v-78.82c0-5.65,4.58-10.24,10.24-10.24h34.82
+                c5.65,0,10.24,4.58,10.24,10.24v78.82C598.23,515.02,593.64,519.6,587.99,519.6z"/>
+            <text transform="matrix(1 0 0 1 547.1268 497.3583)" class="st1 st2">人文</text>
+            <text transform="matrix(1 0 0 1 549.3239 464.0761)" class="st1 st5">G</text>
+            </g>
+            <g class="map_object" id="map_K">
+            <path class="st0" d="M568.11,619.25h-51.18c-5.65,0-10.24-4.58-10.24-10.24v-51.18c0-5.65,4.58-10.24,10.24-10.24h51.18
+                c5.65,0,10.24,4.58,10.24,10.24v51.18C578.34,614.67,573.76,619.25,568.11,619.25z"/>
+            <text transform="matrix(1 0 0 1 510.1348 610.0081)" class="st1 st2">幼兒園</text>
+            <text transform="matrix(1 0 0 1 529.5535 584.7048)" class="st1 st5">K</text>
+            </g>
+            <g class="map_object" id="map_A">
+            <path class="st0" d="M460.05,507.37h-83c-5.65,0-10.24-4.58-10.24-10.24v-23.4c0-5.65,4.58-10.24,10.24-10.24h83
+                c5.65,0,10.24,4.58,10.24,10.24v23.4C470.28,502.78,465.7,507.37,460.05,507.37z"/>
+            <text transform="matrix(1 0 0 1 412.225 493.649)" class="st1 st2">行政</text>
+            <text transform="matrix(1 0 0 1 375.0025 502.3063)" class="st1 st5">A</text>
+            </g>
+            <g class="map_object" id="map_M">
+            <path id="map_M_path" class="st0" d="M506.34,469.95h-23.88c-5.65,0-10.24-4.58-10.24-10.24v-56.82c0-5.65,4.58-10.24,10.24-10.24h23.88
+                c5.65,0,10.24,4.58,10.24,10.24v56.82C516.58,465.37,512,469.95,506.34,469.95z"/>
+            <text transform="matrix(1 0 0 1 473.2842 453.9465)" class="st1 st2">資訊</text>
+            <text transform="matrix(1 0 0 1 478.4001 421.361)" class="st1 st11">M</text>
+            </g>
+            <g class="map_object" id="map_E">
+            <path class="st0" d="M372.75,379.6h-42.71c-5.65,0-10.24,4.58-10.24,10.24v21.29H309.4c-5.65,0-10.24,4.58-10.24,10.24v70.71
+                c0,5.65,4.58,10.24,10.24,10.24h19.65c5.65,0,10.24-4.58,10.24-10.24v-63.65h33.47c5.65,0,10.24-4.58,10.24-10.24v-28.35
+                C382.99,384.18,378.41,379.6,372.75,379.6z"/>
+            <text transform="matrix(1 0 0 1 328.2374 410.9492)" class="st1 st2">理工</text>
+            <text transform="matrix(1 0 0 1 306.7946 469.9535)" class="st1 st12">E</text>
+            </g>
+            <g class="map_object" id="map_S">
+                <path class="st0" d="M257.72,424.51h-42.35c-5.65,0-10.24-4.58-10.24-10.24v-38.71c0-5.65,4.58-10.24,10.24-10.24h42.35
+                    c5.65,0,10.24,4.58,10.24,10.24v38.71C267.96,419.93,263.37,424.51,257.72,424.51z"/>
+                <text transform="matrix(1 0 0 1 211.479 415.011)" class="st1 st4">體育館</text>
+                <text transform="matrix(1 0 0 1 224.9667 397.1298)" class="st1 st13">S</text>
+            </g>
+            <g class="map_object" id="map_3D_Parking_Tower">
+                <path class="st0" d="M258.74,458.79h-53.62c-3.09,0-5.59-2.5-5.59-5.59V430c0-3.09,2.5-5.59,5.59-5.59h53.62
+                c3.09,0,5.59,2.5,5.59,5.59v23.21C264.33,456.29,261.83,458.79,258.74,458.79z"/>
+                <text transform="matrix(1 0 0 1 212.4554 445.7169)" class="st1 st4">立停</text>
+            </g>
+            <g class="map_object" id="map_V">
+            <path class="st0" d="M331.87,203.48H225.93c-5.65,0-10.24-4.58-10.24-10.24v-38.35c0-5.65,4.58-10.24,10.24-10.24h105.94
+                c5.65,0,10.24,4.58,10.24,10.24v38.35C342.11,198.9,337.53,203.48,331.87,203.48z"/>
+            <text transform="matrix(1 0 0 1 267.9569 177.4367)" class="st1 st2">航空</text>
+            <text transform="matrix(1 0 0 1 232.2133 184.4638)" class="st1 st12">V</text>
+            </g>
+            <g class="map_object" id="map_C">
+            <path class="st0" d="M240.34,530.78h-98.12c-5.65,0-10.24-4.58-10.24-10.24v-15.3c0-5.65,4.58-10.24,10.24-10.24h98.12
+                c5.65,0,10.24,4.58,10.24,10.24v15.3C250.58,526.19,246,530.78,240.34,530.78z"/>
+            <text transform="matrix(1 0 0 1 159.8631 521.368)" class="st1 st2">實習工廠</text>
+            <text transform="matrix(1 0 0 1 135.7612 521.3677)" class="st1 st14">C</text>
+            </g>
+            <g class="map_object" id="map_R">
+            <path class="st0" d="M462.52,180.42h-97.47c-5.65,0-10.24-4.58-10.24-10.24v-51.06c0-5.65,4.58-10.24,10.24-10.24h97.47
+                c5.65,0,10.24,4.58,10.24,10.24v51.06C472.75,175.84,468.17,180.42,462.52,180.42z"/>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <defs>
+                                    
+                                        <ellipse id="SVGID_5_" transform="matrix(0.4641 -0.8858 0.8858 0.4641 48.8088 415.7105)" cx="367.96" cy="167.52" rx="11.68" ry="11.68"/>
+                                </defs>
+                                <clipPath id="SVGID_6_">
+                                    <use xlink:href="#SVGID_5_"  style="overflow:visible;"/>
+                                </clipPath>
+                                <g class="st15">
+                                    
+                                        <ellipse transform="matrix(0.4641 -0.8858 0.8858 0.4641 48.8087 415.7104)" class="st7" cx="367.96" cy="167.52" rx="11.68" ry="11.68"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <defs>
+                                    
+                                        <ellipse id="SVGID_7_" transform="matrix(0.4641 -0.8858 0.8858 0.4641 48.8088 415.7105)" cx="367.96" cy="167.52" rx="11.68" ry="11.68"/>
+                                </defs>
+                                <clipPath id="SVGID_8_">
+                                    <use xlink:href="#SVGID_7_"  style="overflow:visible;"/>
+                                </clipPath>
+                                <g class="st16">
+                                    <path class="st9" d="M366.62,166.79c0.45-2.1-1.05-4.19-3.14-4.49c-2.1-0.45-4.19,1.05-4.49,3.14c-0.15,0.45-0.15,0.9,0,1.5
+                                        c-0.15,1.95,1.05,3.89,2.99,4.49l-1.5,12.88c0,0.15,0,0.15,0,0.3c0,1.2,1.05,2.25,2.25,2.25s2.25-1.05,2.25-2.25v-0.15
+                                        l-1.2-12.88C365.72,170.38,366.77,168.73,366.62,166.79z"/>
+                                    <path class="st9" d="M376.2,162.15c-0.45,0-0.75,0.3-0.75,0.75l0,0v3.74c-0.15,0.45-0.45,0.75-0.9,0.6
+                                        c-0.3,0-0.6-0.3-0.6-0.6v-3.74c-0.15-0.45-0.45-0.75-0.9-0.6c-0.3,0-0.6,0.3-0.6,0.6v3.74c-0.15,0.45-0.45,0.75-0.9,0.6
+                                        c-0.3,0-0.6-0.3-0.6-0.6v-3.74c-0.15-0.45-0.45-0.75-0.9-0.6c-0.3,0-0.6,0.3-0.6,0.6v4.49c0,1.8,1.2,3.29,2.99,3.74
+                                        l-1.5,12.73c0,0,0,0.15,0,0.3c0,1.2,1.05,2.25,2.25,2.25s2.25-1.05,2.25-2.25l0,0v-0.15l-1.2-12.88
+                                        c1.65-0.45,2.7-1.95,2.7-3.59v-4.49C377.1,162.59,376.8,162.15,376.2,162.15C376.35,162.15,376.35,162.15,376.2,162.15z"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <defs>
+                                    
+                                        <ellipse id="SVGID_9_" transform="matrix(0.4641 -0.8858 0.8858 0.4641 99.6088 496.1455)" cx="459.83" cy="165.75" rx="11.68" ry="11.68"/>
+                                </defs>
+                                <clipPath id="SVGID_10_">
+                                    <use xlink:href="#SVGID_9_"  style="overflow:visible;"/>
+                                </clipPath>
+                                <g class="st17">
+                                    
+                                        <ellipse transform="matrix(0.4641 -0.8858 0.8858 0.4641 99.6087 496.1454)" class="st7" cx="459.83" cy="165.75" rx="11.68" ry="11.68"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <defs>
+                                    
+                                        <ellipse id="SVGID_11_" transform="matrix(0.4641 -0.8858 0.8858 0.4641 99.6088 496.1455)" cx="459.83" cy="165.75" rx="11.68" ry="11.68"/>
+                                </defs>
+                                <clipPath id="SVGID_12_">
+                                    <use xlink:href="#SVGID_11_"  style="overflow:visible;"/>
+                                </clipPath>
+                                <g class="st18">
+                                    <path class="st9" d="M458.49,165.02c0.45-2.1-1.05-4.19-3.14-4.49c-2.1-0.45-4.19,1.05-4.49,3.14c-0.15,0.45-0.15,0.9,0,1.5
+                                        c-0.15,1.95,1.05,3.89,2.99,4.49l-1.5,12.88c0,0.15,0,0.15,0,0.3c0,1.2,1.05,2.25,2.25,2.25s2.25-1.05,2.25-2.25v-0.15
+                                        l-1.2-12.88C457.59,168.62,458.64,166.97,458.49,165.02z"/>
+                                    <path class="st9" d="M468.07,160.38c-0.45,0-0.75,0.3-0.75,0.75l0,0v3.74c-0.15,0.45-0.45,0.75-0.9,0.6
+                                        c-0.3,0-0.6-0.3-0.6-0.6v-3.74c-0.15-0.45-0.45-0.75-0.9-0.6c-0.3,0-0.6,0.3-0.6,0.6v3.74c-0.15,0.45-0.45,0.75-0.9,0.6
+                                        c-0.3,0-0.6-0.3-0.6-0.6v-3.74c-0.15-0.45-0.45-0.75-0.9-0.6c-0.3,0-0.6,0.3-0.6,0.6v4.49c0,1.8,1.2,3.29,2.99,3.74
+                                        l-1.5,12.73c0,0,0,0.15,0,0.3c0,1.2,1.05,2.25,2.25,2.25s2.25-1.05,2.25-2.25l0,0v-0.15l-1.2-12.88
+                                        c1.65-0.45,2.7-1.95,2.7-3.59v-4.49C468.97,160.83,468.67,160.38,468.07,160.38C468.22,160.38,468.22,160.38,468.07,160.38z"
+                                        />
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <text transform="matrix(1 0 0 1 400.0274 137.9144)" class="st1 st2">宿舍</text>
+            <text transform="matrix(1 0 0 1 366.2021 147.8252)" class="st1 st5">R</text>
+            <text transform="matrix(1 0 0 1 400.0275 169.8607)" class="st1 st19">社辦</text>
+            </g>
+            <path id="map_road" style="fill: rgb(233, 233, 233);" class="st20" 
+            d="M540.26,226.43c0.3-4.25,0.81-22.12-10.18-34.37c-6.31-7.03-15.15-10.82-25.57-10.96
+            c-26.34-0.34-184.12,2.02-190.83,2.12l-1.37,0.02l-1.33,0.32c-9.09,2.16-24.44,13.12-24.31,40.46
+            c0.11,23.98,1.46,129.12,1.53,134.38c-0.03,0.9-0.6,11.87-6.92,16.2c-8.2,5.62-13.11,18.28-12.27,63.98
+            c0.39,21.16,1.92,41.2,2.36,46.57c-29.76-10.9-98.74-34.3-154.11-38.89c-28.17-2.34-40.42-39.2-45.73-69.71
+            c-6.15-35.3-4.53-70.69-4.39-73.39c0.28-3.27,2.92-35,1.98-69.78c-1.88-69.54-16.13-87.37-26.69-94.73
+            c-8.54-5.95-15.66-10.67-22.37-14.33v29.28c2.5,1.69,5.17,3.53,8.08,5.56c2.37,1.65,14.29,13.02,15.98,74.69
+            c0.95,34.53-1.88,67.01-1.91,67.34l-0.03,0.39c-0.09,1.6-2.14,39.53,4.65,78.87c12.31,71.32,43.97,88.7,68.36,90.73
+            c62.21,5.16,146.44,36.89,159.8,42.05l6.13,3.08c1.75,3.18,3.79,6.17,6.16,8.72c5.81,6.75,20.54,55.18,23.41,80.46
+            c2.73,24.04,18.9,43.12,43.31,51.18c4.21,4.55,8.35,25.88,10.6,37.46c2.47,12.72,4.8,24.74,8.39,33.61l35.6,141.57l24.25-6.1
+            l-36.91-146.77c4.92-17.35,12.53-34.91,16.56-37.87c6.34-4.57,12.44-13.56,17.33-72.7c2.41-29.12,3.38-57.56,3.39-57.85l0.12-3.54
+            l-0.23-0.4c3.03-0.83,8.69-1.61,18.65-0.84l0.55,0.04l0.55-0.01c4.56-0.05,9.23,0.03,14.18,0.11c15.4,0.26,31.33,0.52,44.42-3.2
+            c22.81-6.48,28.26-22.59,28.81-34.97C541.63,473.93,540.35,242.36,540.26,226.43z M515.27,504.1
+            c-0.57,12.79-13.03,14.86-47.85,14.29c-4.72-0.08-9.59-0.15-14.31-0.12c-18.38-1.35-31.19,1.25-39.16,7.93
+            c-8.58-5.17-21.14-11.15-39.49-17.34c-13.35-4.88-9.4-22.15-8.93-24.02l-24.15-6.46c-3.82,14.26-3.56,43.91,24.74,54.06l0.23,0.08
+            c25.88,8.72,37.28,16.31,41.65,19.89c-0.36,8.78-1.23,27.47-2.77,47.12c-3.54,45.27-7.6,57.23-8.79,59.87
+            c-3.88,3.28-7.41,8.28-10.55,13.98c-4.42-20.1-10.05-35.98-23.53-40.26c-7.29-2.32-24.51-9.93-26.84-30.44
+            c-2.41-21.21-17.3-81.04-29.91-94.62c-4.41-4.75-8.03-16.83-9.27-24.15c-0.26-3.13-1.73-21.52-2.25-41.43
+            c-0.91-35.07,1.82-45.68,2.82-48.34c15.8-12.08,16.27-33.25,16.27-35.69l0-0.16c-0.01-1.1-1.41-110-1.53-134.37
+            c-0.05-10.69,3.35-14.5,4.97-15.72c21-0.31,163.35-2.4,187.54-2.08c4.43,0.06,6.26,1.52,7.26,2.62c3.61,3.97,4.17,12.59,3.88,16.07
+            l-0.06,0.63l0,0.63C515.27,228.51,516.65,473.01,515.27,504.1z"
+            />
+            <g id="map_close_button" style="cursor: pointer;">
+                <rect x="594.15" y="12.55" class="st21" width="56.33" height="56.33"/>
+                <text transform="matrix(1 0 0 1 598.1267 60.0516)" class="st22 st23">×</text>
+            </g>
+        </g>
+    </svg>
+<!------------------------------------------->
+
+</body>
+<script>
+    let close_button = document.getElementById('map_close_button')
+    let map = document.getElementById('map')
+    let map_cover = document.getElementById('map_cover')
+
+    let m = document.getElementById('map_M')
+    let m_path = document.getElementById('map_M_path')
+
+    let d = document.getElementById('map_D')
+    let d_path = document.getElementById('map_D_path')
+
+    let g = document.getElementById('map_G')
+    let g_path = document.getElementById('map_G_path')
+
+    let t1 = document.getElementById('map_T1')
+    let t1_path = document.getElementById('map_T1_path')
+
+    let t2 = document.getElementById('map_T2')
+    let t2_path = document.getElementById('map_T2_path')
+
+    close_button.onclick = function(){
+        map_cover.classList.add('disappear')
+        map.classList.add('disappear')
+        m.classList.remove('map_object_focus')
+        m_path.classList.remove('map_object_focus_path')
+        d.classList.remove('map_object_focus')
+        d_path.classList.remove('map_object_focus_path')
+        g.classList.remove('map_object_focus')
+        g_path.classList.remove('map_object_focus_path')
+        t1.classList.remove('map_object_focus')
+        t1_path.classList.remove('map_object_focus_path')
+        t2.classList.remove('map_object_focus')
+        t2_path.classList.remove('map_object_focus_path')
+    }
+
+    function open_map(value){
+        map_cover.classList.remove('disappear')
+        map.classList.remove('disappear')
+        if(value=='M'){m.classList.add('map_object_focus');m_path.classList.add('map_object_focus_path');}
+        if(value=='G'){g.classList.add('map_object_focus');g_path.classList.add('map_object_focus_path');}
+        if(value=='D'){d.classList.add('map_object_focus');d_path.classList.add('map_object_focus_path');}
+        if(value=='T1'){t1.classList.add('map_object_focus');t1_path.classList.add('map_object_focus_path');}
+        if(value=='T2'){t2.classList.add('map_object_focus');t2_path.classList.add('map_object_focus_path');}
+    }
+</script>
+</html>
