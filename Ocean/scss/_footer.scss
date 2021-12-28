@@ -1,0 +1,98 @@
+footer{
+    width: 100%;
+    background-color: $main_colorD;
+    color: $colorA;
+    .info_box{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 15vw 100px;
+        .info{
+            width: 30%;
+            min-width: 350px;
+            margin: 30px 15px 0;
+            ul{
+                padding-left: 30%;
+                li{
+                    font-size: $font_text*0.8;
+                    letter-spacing: $text_spacing;
+                    line-height: 3.5em;
+                    a{
+                        color: $colorA;
+                        &::after{
+                            content: '';
+                            position: absolute;
+                            width: 0;
+                            height: 1px;
+                            background-color: $colorA;
+                            bottom: -5px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            transition: all .4s;
+                        }
+                        &:hover{
+                            &::after{
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+            &:nth-child(3){
+                ul{
+                    li{
+                        &:nth-child(1){
+                            a{
+                                &::before{
+                                    content: '';
+                                    position: absolute;
+                                    left: -35px;
+                                    top: 0px;
+                                    width: 20px;
+                                    height: 20px;
+                                    background: url(../img/svg/facebook.svg) no-repeat;
+                                    background-size: cover;
+                                }
+                            }
+                        }
+                        &:nth-child(2){
+                            a{
+                                &::before{
+                                    content: '';
+                                    position: absolute;
+                                    left: -35px;
+                                    top: 0px;
+                                    width: 20px;
+                                    height: 20px;
+                                    background: url(../img/svg/instagram.svg) no-repeat;
+                                    background-size: cover;
+                                }
+                            }
+                        }
+                        &:nth-child(3){
+                            a{
+                                &::before{
+                                    content: '';
+                                    position: absolute;
+                                    left: -35px;
+                                    top: 0px;
+                                    width: 20px;
+                                    height: 20px;
+                                    background: url(../img/svg/line.svg) no-repeat;
+                                    background-size: cover;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .copyright{
+        background-color: black;
+        padding: 15px 0;
+        text-align: center;
+        color: $colorF;
+    }
+}

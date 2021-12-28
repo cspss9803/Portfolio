@@ -1,0 +1,150 @@
+@keyframes float{
+    0%{top: 60%;}
+    100%{top: 70%;}
+}
+header{
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background: linear-gradient(90deg, rgb(49, 100, 134),rgb(13, 45, 66));
+    section:nth-child(1){
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        .banner{
+            width: 100%;
+            height: 100%;
+            background: url(../img/banner.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+    section:nth-child(2){
+        width: 100%;
+        height: 100%;
+        backdrop-filter: brightness(100%) blur(1px);
+        .warp{
+            margin: 30vh 15% 0;
+            transition: all .6s;
+            hr{
+                width: 0%;
+                opacity: .4;
+                transition: all .6s;
+                border-color: $colorA;
+            }
+            h1{
+                width: 205px;
+                height: 75px;
+                left: 50%;
+                transform: translateX(-50%);
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            p{
+                width: 100%;
+                text-align: center;
+                transition: all .4s;
+                color: $colorA;
+                line-height: 35px;
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            .hover_button{
+                width: 70px;
+                height: 70px;
+                border: 1px solid $colorA;
+                border-radius: 50%;
+                position: absolute;
+                top: 70%;
+                left: 50%;
+                transform: translate(-50%,0);
+                color: $colorA;
+                text-align: center;
+                line-height: 70px;
+                opacity: 1;
+                letter-spacing: $font_spacing;
+                animation: float 0.8s infinite alternate;
+            }
+            .star_button{
+                width: 120px;
+                height: 40px;
+                border: 1px solid $colorA;
+                color: $colorA;
+                text-align: center;
+                line-height: 40px;
+                margin-bottom: 60px;
+                border-radius: 5px;
+                top: 30px;
+                left: 50%;
+                transform: translate(-50%,-30px);
+                letter-spacing: $font_spacing;
+                opacity: 0;
+                transition: all .4s;
+                background-color: rgba(255, 255, 255, 0);
+                color: $colorA;
+                &:hover{
+                    background-color: $colorA;
+                    color: $colorB;
+                }
+            }
+            &:hover{
+                opacity: 1;
+                hr{
+                    width: 60%;
+                    opacity: 1;
+                }
+                p{
+                    transform: translateY(0px);
+                    opacity: 1;
+                }
+                .hover_button{
+                    opacity: 0;
+                }
+                .star_button{
+                    opacity: 1;
+                    transform: translate(-50%,0px);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:750px){
+    header{
+        section:nth-child(2){
+            .warp{
+                padding: 0 30px;
+                margin: 20vh 0 0;
+                hr{width: 80%;}
+                p{
+                    font-size: $font_text;
+                    padding: 0 25px;
+                    color: $colorA;
+                }
+                h1{
+                    svg{
+                        g{
+                            transform: scale(0.35,0.35) !important;
+                            path{fill: $colorA}
+                        }
+                    }
+                }
+                &:hover{
+                    hr{
+                        width: 80%;
+                    }
+                }
+            }
+        }
+    }
+}

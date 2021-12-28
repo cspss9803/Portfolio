@@ -1,0 +1,101 @@
+*{
+    cursor: none;
+    user-select: none;
+    box-sizing: border-box;
+    position: relative;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: '微軟正黑體';
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+h1{
+    font-size: $font_h1;
+    letter-spacing: 0.2em;
+    font-weight: lighter;
+    color: $colorA;
+    text-align: left;
+}
+
+h2{
+    font-size: $font_h2;
+    margin: 60px 0;
+    text-align:center;
+    letter-spacing: $font_spacing;
+}
+h3{
+    font-size: $font_h3;
+    padding: 60px 0 30px;
+    text-align:center;
+    letter-spacing: $font_spacing;
+}
+
+hr{
+    min-width: 150px;
+    height: 0.1px;
+    margin: 30px auto;
+    position: relative;
+    border: 0.5px solid;
+}
+
+p{
+    font-size: $font_text;
+    text-indent: 2.5em;
+    line-height: 1.8em;
+    letter-spacing: $text_spacing;
+}
+
+a{
+	text-decoration: none;
+	color: $colorB;
+}
+
+.button{
+    width: 120px;
+    height: 40px;
+    border: 1px solid $colorA;
+    color: $colorA;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 60px;
+    top: 30px;
+    left: 50%;
+    border-radius: 5px;
+    transform: translate(-50%,-30px);
+    letter-spacing: $font_spacing;
+    transition: all .4s;
+    background-color: rgba(255, 255, 255, 0);
+    color: $colorA;
+    a{color: $colorA;}
+    &:hover{
+        background-color: $colorA;
+        color: $colorB;
+    }
+}
+
+.TopBotton{
+    width: 50px;
+    height: 50px;
+    background-color: $main_colorA;
+    border-radius: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: $colorA;
+    z-index: 1;
+    transition: all .4s;
+    display: none;
+    span{line-height: 50px;letter-spacing: $font_spacing;}
+    &:hover{
+        border-radius: 50%;
+    }
+}

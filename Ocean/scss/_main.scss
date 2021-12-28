@@ -1,0 +1,447 @@
+main{
+    width: 100%;
+    .side_nav{
+        width: 400px;
+        height: 100vh;
+        position: fixed;
+        background-color: $colorA;
+        top: 0;
+        left: 0px;
+        transform: translateX(-100%);
+        z-index: 2;
+        padding: 60px 15px;
+        text-align: center;
+        transition: all .4s;
+        .nav_close_button{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 30px;
+            top: 30px;
+            display: none;
+            &::before{
+                content: '';
+                width: 100%;
+                height: 2px;
+                border-radius: 1px;
+                background-color: $colorB;
+                position: absolute;
+                top: 50%;
+                transform: translateX(-50%) rotate(45deg);
+                transition: all 0.4s;
+            }
+            &::after{
+                content: '';
+                width: 100%;
+                height: 2px;
+                border-radius: 1px;
+                background-color: $colorB;
+                position: absolute;
+                top: 50%;
+                transform: translateX(-50%) rotate(-45deg);
+                transition: all 0.4s;
+            }
+            &:hover{
+                &::before{
+                    background-color: rgb(153, 48, 48);
+                }
+                &::after{
+                    background-color: rgb(153, 48, 48);
+                }
+            }
+        }
+        hr{width: 80%;border-color: $colorC;}
+        menu{
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            li{
+                width: 100%;
+                margin: 15px 0;
+                font-size: $font_h5;
+                padding: 15px;
+                display: inline;
+                span{
+                    &::after{
+                        content: '';
+                        width: 0;
+                        height: 1px;
+                        background-color: $colorB;
+                        position: absolute;
+                        bottom: -10px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        transition: all .4s;
+                    }
+                    &:hover{
+                        &::after{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #contents{
+        width: 100%;
+        section{
+            padding: 60px 10%;
+        }
+        #about_website{
+            hr{width: 50%;border-color: $colorC;}
+            .about_info_box{
+                margin-top: 100px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                .about_info{
+                    width: 30%;
+                    min-width: 400px;
+                    padding: 60px;
+                    margin-top: 30px;
+                    box-shadow: 5px 5px 12px $colorC;
+                    border-radius: 10px;
+                    transition: all .4s;
+                    background-color: $colorA;
+                    & + div{
+                        margin-left: 30px;
+                    }
+                    &:hover{
+                        transform: scale(1.05,1.05);
+                        box-shadow: 8px 8px 15px $colorD;
+                    }
+                    hr{width: 100%;border-color: $colorC;}
+                    .about_info_icon{
+                        width: 90px;
+                        height: 90px;
+                        left: 50%;
+                        margin: 15px 0;
+                        transform: translate(-50%,0);
+                        transition: all .4s;
+                        &:hover{
+                            transform: translate(-50%,-30px);
+                        }
+                    }
+                    p{
+                        padding: 0 10px;
+                    }
+                }
+                .about_info:nth-child(1){
+                    .about_info_icon{
+                        background: url(../img/speech-bubble-with-text-lines.png) no-repeat;
+                        background-size: cover;
+                    }
+                }
+                .about_info:nth-child(2){
+                    .about_info_icon{
+                        background: url(../img/light-bulb.png) no-repeat;
+                        background-size: cover;
+                    }
+                }
+                .about_info:nth-child(3){
+                    .about_info_icon{
+                        background: url(../img/fist.png) no-repeat;
+                        background-size: cover;
+                    }
+                }
+            }
+
+        }
+        #ocean_problem{
+            padding: 60px 0 0;
+            margin-top: 120px;
+            .ocean_problem_box{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                color: $colorA;
+                .ocean_trash{
+                    width: 50%;
+                    height: 100vh;
+                    background: url(../img/ocean_trash.jpg) no-repeat;
+                    background-size: cover;
+                    background-position-x: center;
+                    background-attachment: fixed;
+                }
+                .ocean_pollution{
+                    width: 50%;
+                    height: 100vh;
+                    background: url(../img/ocean_pollution.jpg) no-repeat;
+                    background-size: cover;
+                    background-position-x: center;
+                    background-attachment: fixed;
+                }
+                .ocean_problem_warp{
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                    padding: 15vh 0;
+                    backdrop-filter: brightness(100%) blur(0px);
+                    transition: all .3s;
+                    &:hover{
+                        backdrop-filter: brightness(50%) blur(2px);
+                        opacity: 1;
+                    }
+                    p{
+                        width: 75%;
+                        margin: 0 auto 60px;
+                        line-height: 2.5em;
+                    }
+                }
+            }
+        }
+        #marine_life{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            .marine_life_item{
+                width: 33%;
+                flex-grow: 1;
+                height: 33vw;
+                &:nth-child(1) .marine_life_image{
+                    background: url(../img//marine_life/1.jpg) no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                }
+                &:nth-child(2) .marine_life_image{
+                    background: url(../img/marine_life/2.jpg) no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                }
+                &:nth-child(3) .marine_life_image{
+                    background: url(../img//marine_life/3.jpg) no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                }
+                &:nth-child(4) .marine_life_image{
+                    background: url(../img//marine_life/4.png) no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                }
+                &:nth-child(5) .marine_life_image{
+                    background: url(../img//marine_life/5.jpg) no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                }
+                &:nth-child(6) .marine_life_image{
+                    background: url(../img//marine_life/6.jpg) no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                }
+                &:nth-child(7) .marine_life_image{
+                    background: url(../img//marine_life/7.jpg) no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                }
+                &:nth-child(8) .marine_life_image{
+                    background: url(../img//marine_life/8.jpg) no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                }
+                &:nth-child(9) .marine_life_image{
+                    background: url(../img//marine_life/9.jpg) no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                }
+                .marine_life_image{
+                    width: 100%;
+                    height: 100%;
+                    background-size: cover;
+                    background-position: center;
+                    .marine_life_image_cover{
+                        width: 100%;
+                        height: 100%;
+                        backdrop-filter: brightness(100%) blur(0px);
+                        transition: all .4s;
+                        span{
+                            color: $colorA;
+                            font-size: $font_h3;
+                            letter-spacing: $font_spacing;
+                            opacity: 0;
+                            transition: all .4s;
+                            display: block;
+                            text-align: center;
+                            padding: 40% 0 30px;
+                        }
+                        .button{
+                            position: relative;
+                            opacity: 0;
+                        }
+                        &:hover{
+                            backdrop-filter: brightness(40%) blur(5px);
+                            span{
+                                opacity: 1;
+                            }
+                            .button{
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #donation{
+            background-color: $main_colorB;
+            h2{color: $colorA;}
+            .plan_wrap{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding-bottom: 80px;
+            }
+            .plan_box{
+                width: 23%;
+                min-width: 350px;
+                margin: 30px 0 0 30px;
+                background-color: $main_colorA;
+                border-radius: 30px;
+                color: $colorA;
+                border: 1px solid $colorA;
+                box-shadow: 0 0 0 $colorA;
+                transition: all .4s;
+                .plan_content{
+                    width: 80%;
+                    padding: 0 0 30px 25%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    li{
+                        line-height: 3em;
+                        letter-spacing: $text_spacing;
+                        font-size: $font_text;
+                        &::before{
+                            content: '✔';
+                            position: absolute;
+                            left: -30px;
+                            color: $colorA;
+                        }
+                    }
+                    .delete{
+                        font-size: $font_text;
+                        color: $colorF;
+                        &::before{
+                            content: '✘';
+                            position: absolute;
+                            left: -30px;
+                            color: $colorF;
+                        }
+                    }
+                }
+                &:hover{
+                    box-shadow: 0 0 30px $colorA;
+                    transform: translateY(-5px);
+                }
+            }
+        }
+    }
+    #nav_hover_area{
+        width: 15vw;
+        height: 100vh;
+        background-color: rgba(40, 96, 134, .1);
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        transition: all .4s;
+        span{
+            position: absolute;
+            transform: rotate(90deg);
+            top: 40vh;
+            left: -5vw;
+            color: #fff;
+            font-size: 10vw;
+            color: rgba(178, 196, 207, 0.1);
+            transition: all .4s;
+        }
+        &:hover{
+            background-color: rgba(40, 96, 134, 0);
+            & + #nav_click_area{
+                left: 0;
+            }
+            span{
+                color: rgba(178, 196, 207, 0);
+            }
+        }
+    }
+    #nav_click_area{
+        width: 60px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: -60px;
+        background-color: #fff;
+        transition: all .4s;
+        z-index: 2;
+        &:hover{
+            left: 0;
+
+        }
+    }
+    #cover{
+        width: 100vw;
+        height: 100vh;
+        background-color: $main_colorC;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        display: none;
+    }
+}
+
+@media screen and (max-width:750px){
+    main{
+        .side_nav{
+            width: 100vw;
+            .nav_close_button{
+                display: block;
+            }
+        }
+        #contents{
+            #about_website{
+                .about_info_box{
+                    .about_info{
+                        width: 100%;
+                        & + div{
+                            margin-top: 60px;
+                        }
+                    }
+                }
+            }
+            #ocean_problem{
+                .ocean_problem_box{
+                    .ocean_trash{
+                        width: 100%;
+                    }
+                    .ocean_pollution{
+                        width: 100%;
+                    }
+                }
+            }
+            #marine_life{
+                .marine_life_item{
+                    width: 100%;
+                    height: 50vh;
+                    .marine_life_image{
+                        .marine_life_image_cover{
+                            span{
+                                font-size: $font_h4;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #nav_hover_area{
+            span{
+                left: -6vh;
+                font-size: 10vw;
+            }
+        }
+    }
+}

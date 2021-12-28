@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="探究深海中潛藏的秘密吧!">
+    <meta name="keywords" content="ocean,sea,deep sea,abysmal sea,marine life,海洋,海,深海,海洋生物,瀕臨絕種">
+    <link rel="icon" href="./img/ico/Logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./scss/all.css">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/vue.js"></script>
+    <title>Ocean</title>
+</head>
+<body>
+    <header id="Top">
+        <section><!-- Banner -->
+            <div class="banner"></div>
+        </section>
+        <!-- --------------------------------------------------->
+        <section><!-- Title & text -->
+            <div class="warp">
+                <h1>
+                    <img class="interaction" src="./img/svg/logo.svg" alt="Logo">
+                </h1>
+                <hr>
+                <p>
+                     海洋，孕育了無數生命，是一切的開端，卻始終神秘，
+                    <br>它廣大而深沉，彷彿埋藏世間一切的秘密，深邃而撼動人心，
+                    <br>讓我們隨著深海的洋流，一窺它所潛藏的神祕吧。
+                </p>
+                <div class="hover_button">touch</div>
+                <a href="#about_website"><div class="star_button interaction">開始!</div></a>
+            </div>
+        </section>
+    </header>
+<!-- ------------------------------->
+    <nav>
+        <section class="logo"><!-- Logo -->
+            <img class="interaction" src="./img/svg/logo.svg" alt="Logo">
+        </section>
+        <!-- --------------------------------------------------->
+        <section class="nav_option"><!-- Options -->
+            <ul>
+                <li class="interaction">FAQ<div class="option_bar"></div></li>
+                <li class="interaction">最新公告<div class="option_bar"></div></li>
+                <li class="interaction">登入<div class="option_bar"></div></li>
+                <li class="interaction">設定<div class="option_bar"></div></li>
+            </ul>
+        </section>
+        <!-- --------------------------------------------------->
+        <section class="nav_button interaction"><!-- Options_button(hide) -->
+            <div class="interaction"></div>
+        </section>
+    </nav>
+<!-- ------------------------------->
+    <main>
+        <section><!-- 導覽側邊欄功能附件 -->
+            <div id="cover" class="interaction"></div><!-- 遮罩 -->
+            <div id="nav_hover_area"><span>hover</span></div><!-- 導覽側邊欄感應區 -->
+            <div id="nav_click_area" class="interaction"></div><!-- 導覽側邊欄點擊區 -->
+        </section>
+        <!-- --------------------------------------------------->
+        <aside class="side_nav"><!-- 導覽側邊欄 -->
+            <h2>本站內容</h2>
+            <div class="nav_close_button interaction"></div><!-- 手機板關閉按鈕(<750) -->
+            <hr>
+            <menu class="side_menu">
+                <li><span><a class="interaction" href="#about_website">關於本站</a></span></li>
+                <li><span><a class="interaction" href="#ocean_problem">海洋問題</a></spa></li>
+                <li><span><a class="interaction" href="#marine_life">海洋生物</a></spa></li>
+                <li><span><a class="interaction" href="#donation">捐獻支持</a></spa></li>
+            </menu>
+        </aside>
+        <!-- --------------------------------------------------->
+        <aside class="side_setting"><!-- 網站設定 -->
+
+        </aside>
+        <!-- --------------------------------------------------->
+        <section id="contents"><!-- 主要內容 -->
+            <section id="about_website"><!-- 關於本站 -->
+                <h2>關於本站</h2>
+                <hr>
+                <div class="about_info_box">
+                    <div class="about_info">
+                        <div class="about_info_icon interaction"></div>
+                        <h3>介紹</h3>
+                        <hr>
+                        <p>
+                            這是一個關於海洋的網站，除了介紹海洋生物之外，
+                            也會提到他們所遭遇的問題，以及如何救助他們，
+                            給他們一個安穩的家園。
+                        </p>
+                    </div>
+                    <div class="about_info">
+                        <div class="about_info_icon interaction"></div>
+                        <h3>理念</h3>
+                        <hr>
+                        <p>
+                            本站希望透過介紹，讓眾人了解到海洋生物面臨的問題，
+                            把這份守護海洋的理念傳達出去，喚起環保意識的抬頭。
+                        </p>
+                    </div>
+                    <div class="about_info">
+                        <div class="about_info_icon interaction"></div>
+                        <h3>支持</h3>
+                        <hr>
+                        <p>
+                            我們已經著手準備救助海洋生物們，
+                            我們希望瀏覽本站的你能夠伸出援手，
+                            給我們支持與加油，一起為海洋生物盡一份心力。
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- --------------------------------------------------->
+            <section id="ocean_problem"><!-- 海洋問題 -->
+                <h2>海洋問題</h2>
+                <div class="ocean_problem_box">
+                    <div class="ocean_trash">
+                        <div class="ocean_problem_warp">
+                            <h3>海洋垃圾</h3>
+                            <p>
+                                在科技逐漸發達的時代，許多垃圾的問題也開始出現，
+                                其中塑膠垃圾大量流入海中，造成需多生物的生存困難，
+                                許多碎細的塑膠微粒也隨著魚類捕獲，而進入人類的身體中，
+                                造成嚴重的健康問題。
+                            </p>
+                            <a target="_blank" href="https://zh.wikipedia.org/zh-tw/%E6%B5%B7%E6%B4%8B%E5%BB%A2%E6%A3%84%E7%89%A9"><div class="button interaction">了解更多</div></a>
+                        </div>
+                    </div>
+                    <div class="ocean_pollution">
+                        <div class="ocean_problem_warp">
+                            <h3>海洋汙染</h3>
+                            <p>
+                                有許多載有石油的船隻，載運輸的過程中出了問題，
+                                導致裡面的石頭漏出，汙染了非常大塊的海洋區域，
+                                直接導致該區域的生物幾乎都死於石油汙染，就算是活下來的生物，
+                                身上也沾染了石油，若隨著捕撈進入類的食物鏈中，會對人體造成嚴重的影響。
+                            </p>
+                            <a target="_blank" href="https://zh.wikipedia.org/zh-tw/%E6%B5%B7%E6%B4%8B%E6%B1%A1%E6%9F%93"><div class="button interaction">了解更多</div></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- --------------------------------------------------->
+            <section id="marine_life"><!-- 海洋生物 -->
+                <div class="marine_life_item">
+                    <div class="marine_life_image">
+                        <div class="marine_life_image_cover">
+                            <span>藍鯨</span>
+                            <a target="_blank" href="https://zh.wikipedia.org/zh-tw/%E8%93%9D%E9%B2%B8"><div class="button interaction">了解更多</div></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="marine_life_item">
+                    <div class="marine_life_image">
+                        <div class="marine_life_image_cover">
+                            <span>座頭鯨</span>
+                            <a target="_blank" href="https://zh.wikipedia.org/zh-tw/%E5%A4%A7%E7%BF%85%E9%B2%B8"><div class="button interaction">了解更多</div></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="marine_life_item">
+                    <div class="marine_life_image">
+                        <div class="marine_life_image_cover">
+                            <span>雙髻鯊</span>
+                            <a target="_blank" href="https://zh.wikipedia.org/zh-tw/%E9%9B%99%E9%AB%BB%E9%AF%8A"><div class="button interaction">了解更多</div></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="marine_life_item">
+                    <div class="marine_life_image">
+                        <div class="marine_life_image_cover">
+                            <span>肯式龜</span>
+                            <a target="_blank" href="https://zh.wikipedia.org/zh-tw/%E8%82%AF%E6%B0%8F%E9%BE%9C"><div class="button interaction">了解更多</div></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="marine_life_item">
+                    <div class="marine_life_image">
+                        <div class="marine_life_image_cover">
+                            <span>夏威夷僧海豹</span>
+                            <a target="_blank" href="https://zh.wikipedia.org/zh-tw/%E5%A4%8F%E5%A8%81%E5%A4%B7%E5%83%A7%E6%B5%B7%E8%B1%B9"><div class="button interaction">了解更多</div></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="marine_life_item">
+                    <div class="marine_life_image">
+                        <div class="marine_life_image_cover">
+                            <span>西印度海牛</span>
+                            <a target="_blank" href="https://zh.wikipedia.org/zh-tw/%E8%A5%BF%E5%8D%B0%E5%BA%A6%E6%B5%B7%E7%89%9B"><div class="button interaction">了解更多</div></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="marine_life_item">
+                    <div class="marine_life_image">
+                        <div class="marine_life_image_cover">
+                            <span>加灣鼠海豚</span>
+                            <a target="_blank" href="https://zh.wikipedia.org/zh-tw/%E5%8A%A0%E7%81%A3%E9%BC%A0%E6%B5%B7%E8%B1%9A"><div class="button interaction">了解更多</div></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="marine_life_item">
+                    <div class="marine_life_image">
+                        <div class="marine_life_image_cover">
+                            <span>海獅</span>
+                            <a target="_blank" href="https://zh.wikipedia.org/zh-tw/%E6%B5%B7%E7%8D%85"><div class="button interaction">了解更多</div></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="marine_life_item">
+                    <div class="marine_life_image">
+                        <div class="marine_life_image_cover">
+                            <span>玳瑁</span>
+                            <a target="_blank" href="https://zh.wikipedia.org/zh-tw/%E7%8E%B3%E7%91%81"><div class="button interaction">了解更多</div></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- --------------------------------------------------->
+            <section id="donation"><!-- 捐獻支持 -->
+                <h2>支持我們</h2>
+                <div class="plan_wrap">
+                    <div class="plan_box">
+                        <h3>100 NT</h3>
+                        <ul class="plan_content">
+                            <li>一次性捐獻</li>
+                            <li>獲得會員資格</li>
+                            <li>得到感謝獎狀</li>
+                            <li class="delete">收到所有最新消息</li>
+                            <li class="delete">環保商品折扣</li>
+                            <li class="delete">環保活動提案權</li>
+                            <li class="delete">經費使用決策的投票</li>
+                        </ul>
+                        <a href="#"><div class="button interaction">選擇方案</div></a>
+                    </div>
+                    <div class="plan_box">
+                        <h3>300 NT</h3>
+                        <ul class="plan_content">
+                            <li>一次性捐獻</li>
+                            <li>獲得會員資格</li>
+                            <li>得到感謝獎狀</li>
+                            <li >收到所有最新消息</li>
+                            <li class="delete">環保商品折扣</li>
+                            <li class="delete">環保活動提案權</li>
+                            <li class="delete">經費使用決策的投票</li>
+                        </ul>
+                        <a href="#"><div class="button interaction">選擇方案</div></a>
+                    </div>
+                    <div class="plan_box">
+                        <h3>1,000 NT</h3>
+                        <ul class="plan_content">
+                            <li>每月捐獻</li>
+                            <li>獲得會員資格</li>
+                            <li>得到感謝獎狀</li>
+                            <li>收到所有最新消息</li>
+                            <li >環保商品折扣</li>
+                            <li class="delete">環保活動提案權</li>
+                            <li class="delete">經費使用決策的投票</li>
+                        </ul>
+                        <a href="#"><div class="button interaction">選擇方案</div></a>
+                    </div>
+                    <div class="plan_box">
+                        <h3>15,000 NT</h3>
+                        <ul class="plan_content">
+                            <li>每年捐獻</li>
+                            <li>獲得會員資格</li>
+                            <li>得到感謝獎狀</li>
+                            <li>收到所有最新消息</li>
+                            <li>環保商品折扣</li>
+                            <li>環保活動提案權</li>
+                            <li>經費使用決策的投票</li>
+                        </ul>
+                        <a href="#"><div class="button interaction">選擇方案</div></a>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <!-- --------------------------------------------------->
+        <section><!-- 圓圈鼠標 -->
+            <div class="cursor" id="cursor1"></div>
+            <div class="cursor" id="cursor2"></div>
+            <div class="cursor" id="cursor3"></div>
+        </section>
+        <!-- --------------------------------------------------->
+    </main>
+<!-- ------------------------------->
+    <a href="#Top"><div class="TopBotton interaction"><span>Top</span></div></a>
+<!-- ------------------------------->
+    <footer>
+        <section class="info_box"><!-- 網站資訊 -->
+            <section class="info"><!-- 資料來源 -->
+                <h3>資料來源</h3>
+                <ul>
+                    <li>&nbsp; &nbsp; &nbsp; <a class="interaction" target="_blank" href="https://zh.wikipedia.org/">Wikipedia</a></li>
+                    <li>&nbsp; &nbsp; &nbsp; <a class="interaction" target="_blank" href="https://read01.com/zh-tw/R6a2yJ.html#.YcksRWBBxD8">read01</a></li>
+                    <li>&nbsp; &nbsp; &nbsp; <a class="interaction" target="_blank" href="https://www.flaticon.com/">flaticon</a></li>
+                </ul>
+            </section>
+            <section class="info"><!-- 聯絡資訊 -->
+                <h3>聯絡資訊</h3>
+                <ul>
+                    <li>電話: 04-2332-3000</li>
+                    <li>地址: 朝陽科技大學</li>
+                    <li>單位: 資訊管理系多媒體設計組</li>
+                </ul>
+            </section>
+            <section class="info"><!-- 社群連結 -->
+                <h3>社群連結</h3>
+                <ul>
+                    <li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="interaction" target="_blank" href="https://www.facebook.com/">Facebook</a></li>
+                    <li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="interaction" target="_blank" href="https://www.instagram.com/">Instagram</a></li>
+                    <li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="interaction" target="_blank" href="https://line.me/zh-hant/">Line</a></li>
+                </ul>
+            </section>
+        </section>
+        <div class="copyright"><small translate="no">Copyright © 2021 Ocean. All rights reserved.</small></div>
+    </footer>
+</body>
+    <script src="./js/cursor.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/JQuary.js"></script>
+</html>
