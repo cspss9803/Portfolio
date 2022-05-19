@@ -10,7 +10,7 @@ $(document).ready(function () {
             }
         },50)
     setTimeout(function(){
-        $('#m,#number').fadeOut(400);
+        $('#cr,#number').fadeOut(400);
         $('#loading h1').delay(300).fadeIn(400);
         $('#loading').delay(1900).fadeOut(400);
     },5000)

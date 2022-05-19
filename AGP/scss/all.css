@@ -112,7 +112,7 @@ body {
   line-height: 1.5em;
 }
 
-#loading #m {
+#loading #cr {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(calc(-50% - 50px), calc(-50% - 10vh));
@@ -127,7 +127,7 @@ body {
           animation: a 5s 1 cubic-bezier(0.17, 0.67, 0.74, 0.29) both;
 }
 
-#loading #m::before, #loading #m::after {
+#loading #cr::before, #loading #cr::after {
   content: "";
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -145,7 +145,7 @@ body {
           transform-origin: 100px 100px;
 }
 
-#loading #m:before {
+#loading #cr:before {
   z-index: 1;
   -webkit-animation: a1 5s 1 cubic-bezier(0.17, 0.67, 0.74, 0.29) both;
           animation: a1 5s 1 cubic-bezier(0.17, 0.67, 0.74, 0.29) both;
@@ -153,7 +153,7 @@ body {
           transform: rotate(-90deg);
 }
 
-#loading #m:after {
+#loading #cr:after {
   opacity: 0;
   z-index: 2;
   -webkit-transform: rotate(90deg);
