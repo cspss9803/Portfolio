@@ -1,0 +1,116 @@
+$loadr: 200px;
+$loadt: 5s;
+$loadfu: cubic-bezier(.17,.67,.74,.29);
+#loading{
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    cursor: auto;
+    h1{
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% - 10vh));
+        font-size: 3em;
+        letter-spacing: 0.8em;
+        color: $main_color;
+        display: none;
+        line-height: 1.5em;
+    }
+    #cr{
+        top:50%;
+        left:50%;
+        transform: translate(calc(-50% - 50px), calc(-50% - 10vh));
+        margin-left:50px;
+        position:absolute;
+        width:$loadr / 2;
+        height:$loadr;
+        overflow:hidden;
+        border-radius:0 50px 50px 0;
+        animation:a $loadt 1 $loadfu both;
+        &::before,&::after{
+            content:"";
+            box-sizing:border-box;
+            position:absolute;
+            top:0;
+            right:0; 
+            width:$loadr;
+            height:$loadr / 2;
+            background:transparent;
+            border-style:solid;
+            border-color:$main_color;
+            border-width:6px 6px 0;
+            border-radius:($loadr / 2) ($loadr / 2) 0 0;
+            transform-origin:($loadr / 2) ($loadr / 2);
+          }
+          &:before{
+            z-index:1;
+            animation:a1 $loadt 1 $loadfu both;
+            transform:rotate(-90deg);
+          }
+          &:after{
+            opacity:0;
+            z-index:2;
+            transform:rotate(90deg);
+            animation:a2 $loadt 1 $loadfu both;
+          }
+      }
+      #number{
+          font-size: $loadr / 5;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          z-index: 1;
+          transform: translate(calc(-50%), calc(-50% - 10vh - 10px));
+          color: $main_color;
+      }
+}
+@keyframes a1{
+    0%{ 
+        transform:rotate(-90deg);
+    }
+    100%{ 
+        transform:rotate(270deg);
+    }
+    }
+    @keyframes a2{
+    0%{
+        opacity:0;
+    }
+    49.99%{
+        opacity:0;
+    }
+    50%{
+        opacity:1;
+    }
+    100%{
+        opacity:1;
+    }
+    }
+    @keyframes a{
+    0%{
+        margin-left:($loadr / 2);
+        width:$loadr / 2;
+        border-radius:0 ($loadr / 2) ($loadr / 2) 0;
+    }
+    49.99%{
+        margin-left:($loadr / 2);
+        width:$loadr / 2;
+        border-radius:0 ($loadr / 2) ($loadr / 2) 0;
+    }
+    50%{
+        margin-left:($loadr / 4);
+        width:$loadr;
+        border-radius:0;
+    }
+    100%{
+        margin-left:($loadr / 4);
+        width:$loadr;
+        border-radius:0;
+    }
+}
