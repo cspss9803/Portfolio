@@ -23,6 +23,7 @@ function go(s, e){
             $('.st0').removeClass('path');
             if(_random_number==2){
                 if(_random_event==1){
+                    _total = _b+_g+_h+_e+_d+_c;
                     $('#info li:nth-child(3) span').text(_total);
                     $('#b,#g,#h,#e,#d,#c,.one').addClass('path');
                 }
@@ -787,14 +788,11 @@ $(document).ready(function(){
             _random_event = 3;
             event(_random_number,_random_event);
         }
-        if(count>3){
+        if(count==4){
             $('#p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11').show();
             $('.star_point').removeClass('star_point');
             $('.end_point').removeClass('end_point');
             $('.path').removeClass('path');
-            $('main aside button').bind("click",function(){
-                return false;
-            });
             $('.event').stop().fadeOut(300);
                 $('.svg_icon').stop().fadeOut(300);
                 $('.acc').stop().fadeOut(300);
