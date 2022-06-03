@@ -1,5 +1,4 @@
-var data_json = `
-    {
+const data_json = `{
     "1_to_2":{"1":[[1,2]],"2":[[1,5,6,7,4,3,2]]},
     "1_to_3":{"1":[[1,2,3]],"2":[[1,5,6,7,4,3]]},
     "1_to_4":{"1":[[1,2,3,4]],"2":[[1,5,6,7,4]]},
@@ -37,8 +36,8 @@ var data_json = `
     "4_to_6":{"1":[[4,3,2,1,5,6]],"2":[[4,7,6]]},
     "4_to_7":{"1":[[4,3,2,1,5,6,7]],"2":[[4,7]]},
     "4_to_8":{"1":[[4,3,8]],"2":[[4,7,10,11,8]]},
-    "4_to_9":{"1":[[4,3,2,1,5,6,9]],"2":[[4,7,6,9]]},
-    "4_to_10":{"1":[[4,3,2,1,5,6,7,10]],"2":[[4,7,6,5,1,2,3,8,11,10]]},
+    "4_to_9":{"1":[[4,3,8,11,10,9]],"2":[[4,7,6,9]]},
+    "4_to_10":{"1":[[4,7,10]],"2":[[4,3,8,11,10]]},
     "4_to_11":{"1":[[4,3,8,11]],"2":[[4,7,10,11]]},
     "5_to_1":{"1":[[5,1]],"2":[[5,6,7,4,3,2,1]]},
     "5_to_2":{"1":[[5,1,2]],"2":[[5,6,7,4,3,2]]},
@@ -111,99 +110,86 @@ var data_json = `
     "11_to_9":{"1":[[11,10,7,6,9]],"2":[[11,10,9]]},
     "11_to_10":{"1":[[11,8,3,2,1,5,6,7,10]],"2":[[11,10]]}
 }
-`
-var database = JSON.parse(data_json);
-var path_len_data = {
-    "1_5": 2, "5_1": 2,
-    "1_2": 2, "2_1": 2,
-    "3_2": 1, "2_3": 1,
-    "3_2": 1, "2_3": 1,
-    "3_4": 1, "4_3": 1,
-    "3_8": 1.5, "8_3": 1.5,
-    "4_7": 1.5, "7_4": 1.5,
-    "6_7": 1, "7_6": 1,
-    "10_7": 1, "7_10": 1,
-    "11_8": 1, "8_11": 1,
+`// 全部路徑路線資料
+const database = JSON.parse(data_json);//把路線資料從 JSON 轉成 Object
+const path_len_data = {// 各點到點的路徑長度
+    "1_5":   2,   "5_1": 2,
+    "1_2":   2,   "2_1": 2,
+    "3_2":   1,   "2_3": 1,
+    "3_2":   1,   "2_3": 1,
+    "3_4":   1,   "4_3": 1,
+    "3_8":   1.5, "8_3": 1.5,
+    "4_7":   1.5, "7_4": 1.5,
+    "6_7":   1,   "7_6": 1,
+    "10_7":  1,  "7_10": 1,
+    "11_8":  1,  "8_11": 1,
     "11_10": 1, "10_11": 1,
-    "9_6": 1, "6_9": 1,
-    "9_10": 1, "10_9": 1,
-    "5_6": 0.5, "6_5": 0.5
+    "9_6":   1,   "6_9": 1,
+    "9_10":  1,  "10_9": 1,
+    "5_6":   0.5, "6_5": 0.5
 }
-console.log(database)
+// console.log(database) //印出 得路徑資料(Object)
 
-//------------ 每個事件的時間長度 ---------
-const _acc = 100;
-const _rain = 2;
-const _jam = 5;
-//--------------------------------------
-var _random_number//事件發生地點的編號容器
-var _random_event//事件種類的編號容器
+const _acc = 1000; //車禍時 通過此路線時所增加的時間
+const _rain = 2; //下雨時 通過此路線時所增加的時間
+const _jam = 5; //塞車時 通過此路線時所增加的時間
 
-var star_point = false;//起點是否被設定了
-var end_point = false;//終點是否被設定了
-//--------------------------------------
-var sumA = 0
-var sumB = 0
-var eplace = []
-var etype = ''
-//--------------------------------------
-info4 = $('#info li:nth-child(4) span');
-info3 = $('#info li:nth-child(3) span');
-info2 = $('#info li:nth-child(2) span');
-info1 = $('#info li:nth-child(1) span');
-//--------------------------------------
-function calculate_time(n, e){
-    eplace = []
-    if(n==1){//D
-        eplace.push('1_5');
-        eplace.push('5_1');
-    }
-    if (n == 2) {//C
-        eplace.push('1_2');
-        eplace.push('2_1');
-    }
-    if (n == 3) {//G
-        eplace.push('4_7');
-        eplace.push('7_4');
-    }
-    if (n == 4) {//E
-        eplace.push('3_8');
-        eplace.push('8_3');
-    }
-    if (n == 5) {//K
-        eplace.push('9_10');
-        eplace.push('10_9');
-    }
+let _random_number;//事件發生地點的編號容器
+let _random_event;//事件種類的編號容器
+let star_point = false;//起點是否被設定了
+let end_point = false;//終點是否被設定了
+
+let sp = 0; //起點編號
+let ep = 0; //終點編號
+let count = 0; 
+
+let sumA = 0;  //路徑1 的時間總和
+let sumB = 0;  //路徑2 的時間總和
+let eplace = [];  //紀錄事件發生的路段
+let etype = '';  //紀錄事件的種類
+
+const info4 = $('#info li:nth-child(4) span'); //開始地點 的資訊欄位
+const info3 = $('#info li:nth-child(3) span'); //結束地點 的資訊欄位
+const info2 = $('#info li:nth-child(2) span'); //花費時間 的資訊欄位
+const info1 = $('#info li:nth-child(1) span'); //目前路況 的資訊欄位
+
+const calculate_time = (n, e) => {
+    eplace = [];
+    if (n == 1) { eplace.push('1_5');  eplace.push('5_1');  } //D
+    if (n == 2) { eplace.push('1_2');  eplace.push('2_1');  } //C
+    if (n == 3) { eplace.push('4_7');  eplace.push('7_4');  } //G
+    if (n == 4) { eplace.push('3_8');  eplace.push('8_3');  } //E
+    if (n == 5) { eplace.push('9_10'); eplace.push('10_9'); } //K
     if (e == 1) { etype = 'acc' }
     if (e == 2) { etype = 'rain' }
     if (e == 3) { etype = 'jam' }
 }
-function go(s, e){//當起點和終點都設定完成時
-    var planA = database[`${s}_to_${e}`][1][0]
-    var planB = database[`${s}_to_${e}`][2][0]
-    for (var i = 1; i < planA.length; i++) { 
+const go = (s, e) => {//當起點和終點都設定完成時
+    let planA = database[`${s}_to_${e}`][1][0]
+    let planB = database[`${s}_to_${e}`][2][0]
+    for (let i = 1; i < planA.length; i++) { 
         sumA += path_len_data[`${planA[i-1]}_${planA[i]}`];
-        if (eplace.includes(`${planA[i-1]}_${planA[i]}`) && etype == 'acc') { sumA += _acc; }
+        if (eplace.includes(`${planA[i-1]}_${planA[i]}`) && etype == 'acc' ) { sumA += _acc;  }
         if (eplace.includes(`${planA[i-1]}_${planA[i]}`) && etype == 'rain') { sumA += _rain; }
-        if (eplace.includes(`${planA[i-1]}_${planA[i]}`) && etype == 'jam') { sumA += _jam; }
+        if (eplace.includes(`${planA[i-1]}_${planA[i]}`) && etype == 'jam' ) { sumA += _jam;  }
     }
-    for (var i = 1; i < planB.length; i++) { 
+    for (let i = 1; i < planB.length; i++) { 
         sumB += path_len_data[`${planB[i-1]}_${planB[i]}`];
-        if (eplace.includes(`${planB[i-1]}_${planB[i]}`) && etype == 'acc') { sumB += _acc; }
-        if (eplace.includes(`${planB[i - 1]}_${planB[i]}`) && etype == 'rain') {sumB += _rain;}
-        if (eplace.includes(`${planB[i-1]}_${planB[i]}`) && etype == 'jam') { sumB += _jam; }
+        if (eplace.includes(`${planB[i-1]}_${planB[i]}`) && etype == 'acc' ) { sumB += _acc;  }
+        if (eplace.includes(`${planB[i-1]}_${planB[i]}`) && etype == 'rain') { sumB += _rain; }
+        if (eplace.includes(`${planB[i-1]}_${planB[i]}`) && etype == 'jam' ) { sumB += _jam;  }
     }
-    if (sumA>sumB){for (var i=1;i<planB.length; i++) {$(`#road_block${planB[i]},.r${planB[i-1]}_${planB[i]}`).addClass('path');}info3.text(sumB);}
+    if (sumA>sumB){for (let i = 1;i < planB.length; i++) {$(`#road_block${planB[i]},.r${planB[i-1]}_${planB[i]}`).addClass('path');}info3.text(sumB);}
     if (sumA==sumB){
-        let rd = Math.floor(Math.random() * 2 + 1);
-        if(rd==1){for (var i=1;i<planB.length; i++) {$(`#road_block${planB[i]},.r${planB[i-1]}_${planB[i]}`).addClass('path');}info3.text(sumB);}
-        if(rd==2){for (var i=1;i<planA.length; i++) {$(`#road_block${planA[i]},.r${planA[i-1]}_${planA[i]}`).addClass('path');}info3.text(sumA);}
+        let rd = Math.floor(Math.random()*2+1);
+        if(rd==1){for(let i=1;i<planB.length; i++) {$(`#road_block${planB[i]},.r${planB[i-1]}_${planB[i]}`).addClass('path');}info3.text(sumB);}
+        if(rd==2){for(let i=1;i<planA.length; i++) {$(`#road_block${planA[i]},.r${planA[i-1]}_${planA[i]}`).addClass('path');}info3.text(sumA);}
     }
-    if (sumB>sumA){for (var i=1;i<planA.length; i++) {$(`#road_block${planA[i]},.r${planA[i-1]}_${planA[i]}`).addClass('path');}info3.text(sumA);}
+    if (sumB > sumA){for (let i=1;i<planA.length; i++) {$(`#road_block${planA[i]},.r${planA[i-1]}_${planA[i]}`).addClass('path');}info3.text(sumA);}
     sumA = 0;
     sumB = 0;
 }
-function rndm(){
+const rndm = () => {
     $('.star_point').removeClass('star_point');//把起點清除
     $('.end_point').removeClass('end_point');//把終點清除
     star_point = false; //起點編號: 未設定
@@ -215,23 +201,31 @@ function rndm(){
     $('.rain').stop().fadeOut(300);//清除 下雨 事件圖標
     $('.jam').stop().fadeOut(300);//清除 塞車 事件圖標
     $('.svg_icon').removeClass('acc_event rain_event jam_event');//清除事件種類圖標的顏色
-    info4.text(' ');//清空資訊欄位
-    info3.text(' ');//清空資訊欄位
-    info2.text(' ');//清空資訊欄位
-    info1.text(' ');//清空資訊欄位
+    info4.text(' ');
+    info3.text(' ');
+    info2.text(' ');
+    info1.text(' ');
 }
-
+const event_type = (n, e) => {//顯示事件圖標 n=哪一個地點 e=哪一個事件
+    if (e == 1) { info4.text('車禍'); $(`#${n} .acc`).addClass('acc_event'); $(`#${n} .acc`).stop().fadeIn(400); } //車禍
+    if (e == 2) { info4.text('下雨'); $(`#${n} .rain`).addClass('rain_event'); $(`#${n} .rain`).stop().fadeIn(400); } //下雨
+    if (e == 3) { info4.text('塞車'); $(`#${n} .jam`).addClass('jam_event'); $(`#${n} .jam`).stop().fadeIn(400); } //塞車
+}
+const road_event = (n, e) => {//隨機事件 n=哪一個地點 e=哪一個事件
+    if (n == 1) { $('#event_d,#icon_d').fadeIn(400); event_type('icon_d', e) }//事件發生在 D
+    if (n == 2) { $('#event_c,#icon_c').fadeIn(400); event_type('icon_c', e) }//事件發生在 C
+    if (n == 3) { $('#event_g,#icon_g').fadeIn(400); event_type('icon_g', e) }//事件發生在 G
+    if (n == 4) { $('#event_e,#icon_e').fadeIn(400); event_type('icon_e', e) }//事件發生在 E
+    if (n == 5) { $('#event_k,#icon_k').fadeIn(400); event_type('icon_k', e) }//事件發生在 K
+}
 $(document).ready(()=>{
-    $(document).bind("contextmenu",function(){return false;});//阻擋右鍵選單出現
-    var sp = 0//起點編號
-    var ep = 0//終點編號
-    var count = 0
+    $(document).bind("contextmenu",()=>{return false;});//阻擋右鍵選單出現
+    $('#cover>.alert_window>button').click(()=>{$('#cover').fadeOut(500);})
     $('.st1').mousedown(function (e) {//設定起點 和 終點
-        var point_number = $(this).attr('data-number');
+        let point_number = $(this).attr('data-number');
         if (1 == e.which) {//點左鍵 ( 設定起點 )
-            if($(`#p${point_number}`).hasClass('end_point')){
-                alert('起點和終點不能是同處')
-            }else{
+            if($(`#p${point_number}`).hasClass('end_point')){$('#cover').fadeIn(500);}
+            else{
                 $('.st1').removeClass('star_point');
                 $(`#p${point_number}`).addClass('star_point');
                 star_point = true;
@@ -239,9 +233,8 @@ $(document).ready(()=>{
                 info1.text(`p${point_number}`);
             }
         } else if (3 == e.which) {//點右鍵 ( 設定終點 )
-            if ($(`#p${point_number}`).hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
+            if ($(`#p${point_number}`).hasClass('star_point')){$('#cover').fadeIn(500);}
+            else{
                 $('.st1').removeClass('end_point');
                 $(`#p${point_number}`).addClass('end_point');
                 end_point = true;
@@ -249,75 +242,50 @@ $(document).ready(()=>{
                 info2.text(`p${point_number}`);
             }
         }
-        if (star_point == true && end_point == true) { go(sp, ep); }
-    });
-//------------------------------------
-    function event_type(n, e){//顯示事件圖標 n=哪一個地點 e=哪一個事件
-        if (e == 1) {//車禍
-            info4.text('車禍');
-            $(`#${n} .acc`).addClass('acc_event');
-            $(`#${n} .acc`).stop().fadeIn(400);
-        } else if (e == 2) {//下雨
-            info4.text('下雨');
-            $(`#${n} .rain`).addClass('rain_event');
-            $(`#${n} .rain`).stop().fadeIn(400);
-        } else if (e == 3) {//塞車
-            info4.text('塞車');
-            $(`#${n} .jam`).addClass('jam_event');
-            $(`#${n} .jam`).stop().fadeIn(400);
-        }
-    }
-    function event(n, e) {//隨機事件 n=哪一個地點 e=哪一個事件
-        if (n == 1) { $('#event_d,#icon_d').fadeIn(400); event_type('icon_d',e)}//事件發生在 D
-        if (n == 2) { $('#event_c,#icon_c').fadeIn(400); event_type('icon_c',e)}//事件發生在 C
-        if (n == 3) { $('#event_g,#icon_g').fadeIn(400); event_type('icon_g',e)}//事件發生在 G
-        if (n == 4) { $('#event_e,#icon_e').fadeIn(400); event_type('icon_e',e)}//事件發生在 E
-        if (n == 5) { $('#event_k,#icon_k').fadeIn(400); event_type('icon_k',e)}//事件發生在 K
-    }
-//------------------------------------
+        if (star_point == true && end_point == true) { $('.path').removeClass('path'); go(sp, ep);}
+});
     $('.st1').hide();
-    $('main aside button').on('click',function(){
+    $('main aside button').on('click',()=>{//開始路況模擬
         count++;
         if (count == 1) {
-            $('#p1,#p2').fadeIn(400)
-            rndm();
-            _random_number = 2;
+            $('#p1,#p2').fadeIn(400);
+            rndm(); _random_number = 2;
             _random_event = 1;
-            event(_random_number, _random_event);
             calculate_time(_random_number, _random_event);
+            road_event(_random_number, _random_event);
         }
         if (count == 2) {
             $('.st1').hide();
-            $('#p6,#p8').fadeIn(400)
+            $('#p6, #p8').fadeIn(400);
             rndm();
             _random_number = 5;
             _random_event = 2;
-            event(_random_number, _random_event);
             calculate_time(_random_number, _random_event);
+            road_event(_random_number, _random_event);
         }
         if (count == 3) {
             $('.st1').hide();
-            $('#p3,#p9').fadeIn(400)
-            rndm();
+            $('#p3, #p9').fadeIn(400);
+            rndm(); 
             _random_number = 3;
-            _random_event =3;
-            event(_random_number, _random_event);
+            _random_event = 3;
             calculate_time(_random_number, _random_event);
+            road_event(_random_number, _random_event);
         }
         if (count == 4) {
             $('.st1').show();
             rndm();
             _random_number = Math.floor(Math.random() * 5 + 1);
             _random_event = Math.floor(Math.random() * 3 + 1);
-            event(_random_number, _random_event);
             calculate_time(_random_number, _random_event);
+            road_event(_random_number, _random_event);
         }
-        if (count > 4) {
+        if (count >= 5) {
             rndm();
             _random_number = Math.floor(Math.random() * 5 + 1);
             _random_event = Math.floor(Math.random() * 3 + 1);
-            event(_random_number, _random_event);
             calculate_time(_random_number, _random_event);
+            road_event(_random_number, _random_event);
         }
     })
 })

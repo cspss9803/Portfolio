@@ -555,6 +555,68 @@ main > section #info li {
   font-size: 1.3em;
 }
 
+#cover {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(104, 104, 172, 0.7);
+  display: none;
+}
+
+#cover .alert_window {
+  width: 400px;
+  height: 200px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 3px;
+}
+
+#cover .alert_window h3 {
+  text-align: center;
+  margin-top: 15px;
+  letter-spacing: 0.15em;
+  font-size: 1.4em;
+  font-weight: bolder;
+}
+
+#cover .alert_window p {
+  text-align: center;
+  margin-top: 45px;
+  letter-spacing: 0.15em;
+  font-size: 1.1em;
+}
+
+#cover .alert_window button {
+  width: 150px;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  background-color: #6868ac;
+  position: absolute;
+  color: #fff;
+  bottom: 30px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  letter-spacing: 0.15em;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  cursor: none;
+}
+
+#cover .alert_window button:hover {
+  background-color: rgba(104, 104, 172, 0.7);
+}
+
 .star_point {
   opacity: 1 !important;
 }
