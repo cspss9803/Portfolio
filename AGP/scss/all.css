@@ -63,6 +63,10 @@ body {
   width: 100%;
   overflow: hidden;
   cursor: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 @-webkit-keyframes floating {
@@ -553,6 +557,13 @@ main > section #info {
 main > section #info li {
   margin: 30px 20px;
   font-size: 1.3em;
+}
+
+main > section #info li span {
+  font-size: 1.5em;
+  font-weight: bolder;
+  color: #6868ac;
+  padding-left: 10px;
 }
 
 #cover {

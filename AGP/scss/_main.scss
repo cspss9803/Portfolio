@@ -161,6 +161,12 @@ main {
             li{
                 margin: 30px 20px;
                 font-size: 1.3em;
+                span{
+                    font-size: 1.5em;
+                    font-weight: bolder;
+                    color: $main_color;
+                    padding-left: 10px;
+                }
             }
         }
     }
