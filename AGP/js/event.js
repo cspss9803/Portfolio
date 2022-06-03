@@ -1,826 +1,323 @@
-const _a = 2;
-const _b = 2;
-const _c = 1;
-const _d = 1;
-const _e = 2;
-const _f = 2;
-const _g = 0.5;
-const _h = 1;
-const _i = 1;
-const _j = 1;
-const _k = 1;
-const _l = 1;
-const _m = 1;
-const _acc = 100
-const _rain = 1
-const _jam = 2
-let _total = 0
-var _random_number
-var _random_event
-function go(s, e){
-    if(s==1){
-        if(e==2){
-            $('.st0').removeClass('path');
-            if(_random_number==2){
-                if(_random_event==1){
-                    _total = _b+_g+_h+_e+_d+_c;
-                    $('#info li:nth-child(3) span').text(_total);
-                    $('#b,#g,#h,#e,#d,#c,.one').addClass('path');
-                }
-            }
-        }
-        // if(e==3){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==4){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==5){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==6){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==7){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==8){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==9){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==10){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==11){
-        //     $('.st0').removeClass('path');
-        // }
-    }
-    // if(s==2){
-    //     if(e==1){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==3){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==4){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==5){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==6){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==7){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==8){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==9){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==10){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==11){
-    //         $('.st0').removeClass('path');
-    //     }
-    // }
-    if(s==3){
-        // if(e==1){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==2){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==4){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==5){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==6){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==7){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==8){
-        //     $('.st0').removeClass('path');
-        // }
-        if(e==9){
-            $('.st0').removeClass('path');
-            if(_random_number==3){
-                if(_random_event==3){
-                    _total = _f+_k+_m+_l;
-                    $('#info li:nth-child(3) span').text(_total);
-                    $('#f,#k,#m,#l,.three').addClass('path');
-                }
-            }
-        }
-    //     if(e==10){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==11){
-    //         $('.st0').removeClass('path');
-    //     }
-    // }
-    // if(s==4){
-    //     if(e==1){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==2){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==3){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==5){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==6){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==7){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==8){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==9){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==10){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==11){
-    //         $('.st0').removeClass('path');
-    //     }
-    // }
-    // if(s==5){
-    //     if(e==1){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==2){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==3){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==4){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==6){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==7){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==8){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==9){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==10){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==11){
-    //         $('.st0').removeClass('path');
-    //     }
-    }
-    if(s==6){
-        // if(e==1){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==2){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==3){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==4){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==5){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==7){
-        //     $('.st0').removeClass('path');
-        // }
-        if(e==8){
-            $('.st0').removeClass('path');
-            if(_random_number==5){
-                if(_random_event==2){
-                    _total = _h+_j+_m+_k;
-                    $('#info li:nth-child(3) span').text(_total);
-                    $('#h,#j,#m,#k,.two').addClass('path');
-                }
-            }
-        }
-        // if(e==9){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==10){
-        //     $('.st0').removeClass('path');
-        // }
-        // if(e==11){
-        //     $('.st0').removeClass('path');
-        // }
-    }
-    // if(s==7){
-    //     if(e==1){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==2){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==3){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==4){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==5){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==6){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==8){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==9){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==10){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==11){
-    //         $('.st0').removeClass('path');
-    //     }
-    // }
-    // if(s==8){
-    //     if(e==1){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==2){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==3){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==4){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==5){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==6){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==7){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==9){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==10){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==11){
-    //         $('.st0').removeClass('path');
-    //     }
-    // }
-    // if(s==9){
-    //     if(e==1){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==2){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==3){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==4){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==5){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==6){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==7){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==8){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==10){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==11){
-    //         $('.st0').removeClass('path');
-    //     }
-    // }
-    // if(s==10){
-    //     if(e==1){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==2){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==3){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==4){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==5){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==6){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==7){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==8){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==9){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==11){
-    //         $('.st0').removeClass('path');
-    //     }
-    // }
-    // if(s==11){
-    //     if(e==1){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==2){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==3){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==4){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==5){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==6){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==7){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==8){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==9){
-    //         $('.st0').removeClass('path');
-    //     }
-    //     if(e==10){
-    //         $('.st0').removeClass('path');
-    //     }
-    // }
+var data_json = `
+    {
+    "1_to_2":{"1":[[1,2]],"2":[[1,5,6,7,4,3,2]]},
+    "1_to_3":{"1":[[1,2,3]],"2":[[1,5,6,7,4,3]]},
+    "1_to_4":{"1":[[1,2,3,4]],"2":[[1,5,6,7,4]]},
+    "1_to_5":{"1":[[1,2,3,4,7,6,5]],"2":[[1,5]]},
+    "1_to_6":{"1":[[1,2,3,4,7,6]],"2":[[1,5,6]]},
+    "1_to_7":{"1":[[1,2,3,4,7]],"2":[[1,5,6,7]]},
+    "1_to_8":{"1":[[1,2,3,8]],"2":[[1,5,6,7,4,3,8]]},
+    "1_to_9":{"1":[[1,2,3,4,7,6,9]],"2":[[1,5,6,9]]},
+    "1_to_10":{"1":[[1,2,3,4,7,10]],"2":[[1,5,6,7,10]]},
+    "1_to_11":{"1":[[1,2,3,8,11]],"2":[[1,5,6,9,10,11]]},
+    "2_to_1":{"1":[[2,1]],"2":[[2,3,4,7,6,5,1]]},
+    "2_to_3":{"1":[[2,1,5,6,7,4,3]],"2":[[2,3]]},
+    "2_to_4":{"1":[[2,1,5,6,7,4]],"2":[[2,3,4]]},
+    "2_to_5":{"1":[[2,1,5]],"2":[[2,3,4,7,6,5]]},
+    "2_to_6":{"1":[[2,1,5,6]],"2":[[2,3,4,7,6]]},
+    "2_to_7":{"1":[[2,1,5,6,7]],"2":[[2,3,4,7]]},
+    "2_to_8":{"1":[[2,1,5,6,7,4,3,8]],"2":[[2,3,8]]},
+    "2_to_9":{"1":[[2,1,5,6,9]],"2":[[2,3,4,7,6,9]]},
+    "2_to_10":{"1":[[2,1,5,6,7,10]],"2":[[2,3,4,7,10]]},
+    "2_to_11":{"1":[[2,3,8,11]],"2":[[2,3,4,7,10,11]]},
+    "3_to_1":{"1":[[3,2,1]],"2":[[3,4,7,6,5,1]]},
+    "3_to_2":{"1":[[3,2]],"2":[[3,4,7,6,5,1,2]]},
+    "3_to_4":{"1":[[3,2,1,5,6,7,4]],"2":[[3,4]]},
+    "3_to_5":{"1":[[3,2,1,5]],"2":[[3,4,7,6,5]]},
+    "3_to_6":{"1":[[3,2,1,5,6]],"2":[[3,4,7,6]]},
+    "3_to_7":{"1":[[3,8,11,10,7]],"2":[[3,4,7]]},
+    "3_to_8":{"1":[[3,8]],"2":[[3,4,7,10,11,8]]},
+    "3_to_9":{"1":[[3,8,11,10,9]],"2":[[3,4,7,6,9]]},
+    "3_to_10":{"1":[[3,8,11,10]],"2":[[3,4,7,10]]},
+    "3_to_11":{"1":[[3,8,11]],"2":[[3,4,7,10,11]]},
+    "4_to_1":{"1":[[4,3,2,1]],"2":[[4,7,6,5,1]]},
+    "4_to_2":{"1":[[4,3,2]],"2":[[4,7,6,5,1,2]]},
+    "4_to_3":{"1":[[4,3]],"2":[[4,7,6,5,1,2,3]]},
+    "4_to_5":{"1":[[4,3,2,1,5]],"2":[[4,7,6,5]]},
+    "4_to_6":{"1":[[4,3,2,1,5,6]],"2":[[4,7,6]]},
+    "4_to_7":{"1":[[4,3,2,1,5,6,7]],"2":[[4,7]]},
+    "4_to_8":{"1":[[4,3,8]],"2":[[4,7,10,11,8]]},
+    "4_to_9":{"1":[[4,3,2,1,5,6,9]],"2":[[4,7,6,9]]},
+    "4_to_10":{"1":[[4,3,2,1,5,6,7,10]],"2":[[4,7,6,5,1,2,3,8,11,10]]},
+    "4_to_11":{"1":[[4,3,8,11]],"2":[[4,7,10,11]]},
+    "5_to_1":{"1":[[5,1]],"2":[[5,6,7,4,3,2,1]]},
+    "5_to_2":{"1":[[5,1,2]],"2":[[5,6,7,4,3,2]]},
+    "5_to_3":{"1":[[5,1,2,3]],"2":[[5,6,7,4,3]]},
+    "5_to_4":{"1":[[5,1,2,3,4]],"2":[[5,6,7,4]]},
+    "5_to_6":{"1":[[5,1,2,3,4,7,6]],"2":[[5,6]]},
+    "5_to_7":{"1":[[5,1,2,3,4,7]],"2":[[5,6,7]]},
+    "5_to_8":{"1":[[5,1,2,3,8]],"2":[[5,6,7,4,3,8]]},
+    "5_to_9":{"1":[[5,6,7,10,9]],"2":[[5,6,9]]},
+    "5_to_10":{"1":[[5,1,2,3,4,7,10]],"2":[[5,6,7,10]]},
+    "5_to_11":{"1":[[5,6,7,10,11]],"2":[[5,6,9,10,11]]},
+    "6_to_1":{"1":[[6,5,1]],"2":[[6,7,4,3,2,1]]},
+    "6_to_2":{"1":[[6,5,1,2]],"2":[[6,7,4,3,2]]},
+    "6_to_3":{"1":[[6,5,1,2,3]],"2":[[6,7,4,3]]},
+    "6_to_4":{"1":[[6,5,1,2,3,4]],"2":[[6,7,4]]},
+    "6_to_5":{"1":[[6,5]],"2":[[6,7,4,3,2,1,5]]},
+    "6_to_7":{"1":[[6,5,1,2,3,4,7]],"2":[[6,7]]},
+    "6_to_8":{"1":[[6,9,10,11,8]],"2":[[6,7,10,11,8]]},
+    "6_to_9":{"1":[[6,9]],"2":[[6,7,10,9]]},
+    "6_to_10":{"1":[[6,7,10]],"2":[[6,9,10]]},
+    "6_to_11":{"1":[[6,7,10,11]],"2":[[6,9,10,11]]},
+    "7_to_1":{"1":[[7,4,3,2,1]],"2":[[7,6,5,1]]},
+    "7_to_2":{"1":[[7,4,3,2]],"2":[[7,6,5,1,2]]},
+    "7_to_3":{"1":[[7,4,3]],"2":[[7,6,5,1,2,3]]},
+    "7_to_4":{"1":[[7,4]],"2":[[7,6,5,1,2,3,4]]},
+    "7_to_5":{"1":[[7,4,3,2,1,5]],"2":[[7,6,5]]},
+    "7_to_6":{"1":[[7,4,3,2,1,5,6]],"2":[[7,6]]},
+    "7_to_8":{"1":[[7,4,3,8]],"2":[[7,6,5,1,2,3,8]]},
+    "7_to_9":{"1":[[7,6,9]],"2":[[7,10,9]]},
+    "7_to_10":{"1":[[7,10]],"2":[[7,6,9,10]]},
+    "7_to_11":{"1":[[7,10,11]],"2":[[7,4,3,8,11]]},
+    "8_to_1":{"1":[[8,3,2,1]],"2":[[8,11,10,9,6,7,4,3,2,1]]},
+    "8_to_2":{"1":[[8,3,2]],"2":[[8,11,10,9,6,7,4,3,2]]},
+    "8_to_3":{"1":[[8,3]],"2":[[8,11,10,9,6,7,4,3]]},
+    "8_to_4":{"1":[[8,3,2,1,5,6,7,4]],"2":[[8,11,10,9,6,7,4]]},
+    "8_to_5":{"1":[[8,3,2,1,5]],"2":[[8,11,10,9,6,5]]},
+    "8_to_6":{"1":[[8,11,10,7,6]],"2":[[8,11,10,9,6]]},
+    "8_to_7":{"1":[[8,3,2,1,5,6,7]],"2":[[8,11,10,7]]},
+    "8_to_9":{"1":[[8,3,2,1,5,6,9]],"2":[[8,11,10,9]]},
+    "8_to_10":{"1":[[8,3,2,1,5,6,7,10]],"2":[[8,11,10]]},
+    "8_to_11":{"1":[[8,11]],"2":[[8,3,4,7,10]]},
+    "9_to_1":{"1":[[9,6,5,1]],"2":[[9,6,7,4,3,2,1]]},
+    "9_to_2":{"1":[[9,6,5,1,2]],"2":[[9,6,7,4,3,2]]},
+    "9_to_3":{"1":[[9,10,11,8,3]],"2":[[9,6,7,4,3]]},
+    "9_to_4":{"1":[[9,6,5,1,2,3,4]],"2":[[9,6,7,4]]},
+    "9_to_5":{"1":[[9,6,5]],"2":[[9,6,7,4,3,2,1,5]]},
+    "9_to_6":{"1":[[9,6]],"2":[[9,6]]},
+    "9_to_7":{"1":[[9,6,5,1,2,3,4,7]],"2":[[9,6,7]]},
+    "9_to_8":{"1":[[9,6,5,1,2,3,8]],"2":[[9,6,7,4,3,8]]},
+    "9_to_10":{"1":[[9,10]],"2":[[9,6,7,10]]},
+    "9_to_11":{"1":[[9,10,11]],"2":[[9,6,7,10,11]]},
+    "10_to_1":{"1":[[10,7,4,3,2,1]],"2":[[10,9,6,7,4,3,2,1]]},
+    "10_to_2":{"1":[[10,7,4,3,2]],"2":[[10,9,6,7,4,3,2]]},
+    "10_to_3":{"1":[[10,7,4,3]],"2":[[10,9,6,7,4,3]]},
+    "10_to_4":{"1":[[10,7,4]],"2":[[10,9,6,7,4]]},
+    "10_to_5":{"1":[[10,7,4,3,2,1,5]],"2":[[10,9,6,5]]},
+    "10_to_6":{"1":[[10,7,4,3,2,1,5,6]],"2":[[10,9,6]]},
+    "10_to_7":{"1":[[10,7]],"2":[[10,9,6,7]]},
+    "10_to_8":{"1":[[10,7,4,3,8]],"2":[[10,9,6,7,4,3,8]]},
+    "10_to_9":{"1":[[10,7,6,9]],"2":[[10,9]]},
+    "10_to_11":{"1":[[10,11]],"2":[[10,7,4,3,8,11]]},
+    "11_to_1":{"1":[[11,8,3,2,1]],"2":[[11,10,9,6,7,4,3,2,1]]},
+    "11_to_2":{"1":[[11,8,3,2]],"2":[[11,10,9,6,7,4,3,2]]},
+    "11_to_3":{"1":[[11,8,3]],"2":[[11,10,9,6,7,4,3]]},
+    "11_to_4":{"1":[[11,8,3,4]],"2":[[11,10,9,6,7,4]]},
+    "11_to_5":{"1":[[11,8,3,2,1,5]],"2":[[11,10,9,6,5]]},
+    "11_to_6":{"1":[[11,8,3,2,1,5,6]],"2":[[11,10,9,6]]},
+    "11_to_7":{"1":[[11,8,3,2,1,5,6,7]],"2":[[11,10,9,6,7]]},
+    "11_to_8":{"1":[[11,8]],"2":[[11,10,9,6,7,4,3,8]]},
+    "11_to_9":{"1":[[11,10,7,6,9]],"2":[[11,10,9]]},
+    "11_to_10":{"1":[[11,8,3,2,1,5,6,7,10]],"2":[[11,10]]}
 }
-$(document).ready(function(){
-    $(document).bind("contextmenu",function(){
-        return false;
-    });
-    var star_point = false;
-    var end_point = false;
-    var sp = 0
-    var ep = 0
-    $('#p1').on('mousedown',function(e){
-        if(1 == e.which){
-            if($('#p1').hasClass('end_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('star_point');
-                $('#p1').addClass('star_point');
-                star_point = true;
-                sp = 1;
-                $('#info li:nth-child(1) span').text('A');
-            }
-        }else if(3 == e.which){
-            if($('#p1').hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('end_point');
-                $('#p1').addClass('end_point');
-                end_point = true;
-                ep = 1;
-            }
-        }
-    });
-    $('#p2').on('mousedown',function(e){
-        if(1 == e.which){
-            if($('#p2').hasClass('end_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('star_point');
-                $('#p2').addClass('star_point');
-                star_point = true;
-                sp = 2;
-            }
-        }else if(3 == e.which){
-            if($('#p2').hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('end_point');
-                $('#p2').addClass('end_point');
-                end_point = true;
-                ep = 2;
-                $('#info li:nth-child(2) span').text('B');
-            }
-        }
-    });
-    $('#p3').on('mousedown',function(e){
-        if(1 == e.which){
-            if($('#p3').hasClass('end_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('star_point');
-                $('#p3').addClass('star_point');
-                star_point = true;
-                sp = 3;
-                $('#info li:nth-child(1) span').text('E');
-            }
-        }else if(3 == e.which){
-            if($('#p3').hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('end_point');
-                $('#p3').addClass('end_point');
-                end_point = true;
-                ep = 3;
-            }
-        }
-    });
-    $('#p4').on('mousedown',function(e){
-        if(1 == e.which){
-            if($('#p4').hasClass('end_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('star_point');
-                $('#p4').addClass('star_point');
-                star_point = true;
-                sp = 4;
-            }
-        }else if(3 == e.which){
-            if($('#p4').hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('end_point');
-                $('#p4').addClass('end_point');
-                end_point = true;
-                ep = 4;
-            }
-        }
-    });
-    $('#p5').on('mousedown',function(e){
-        if(1 == e.which){
-            if($('#p5').hasClass('end_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('star_point');
-                $('#p5').addClass('star_point');
-                star_point = true;
-                sp = 5;
-            }
-        }else if(3 == e.which){
-            if($('#p5').hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('end_point');
-                $('#p5').addClass('end_point');
-                end_point = true;
-                ep = 5;
-            }
-        }
-    });
-    $('#p6').on('mousedown',function(e){
-        if(1 == e.which){
-            if($('#p6').hasClass('end_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('star_point');
-                $('#p6').addClass('star_point');
-                star_point = true;
-                sp = 6;
-                $('#info li:nth-child(1) span').text('F');
-            }
-        }else if(3 == e.which){
-            if($('#p6').hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('end_point');
-                $('#p6').addClass('end_point');
-                end_point = true;
-                ep = 6;
-            }
-        }
-    });
-    $('#p7').on('mousedown',function(e){
-        if(1 == e.which){
-            if($('#p7').hasClass('end_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('star_point');
-                $('#p7').addClass('star_point');
-                star_point = true;
-                sp = 7;
-            }
-        }else if(3 == e.which){
-            if($('#p7').hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('end_point');
-                $('#p7').addClass('end_point');
-                end_point = true;
-                ep = 7;
-            }
-        }
-    });
-    $('#p8').on('mousedown',function(e){
-        if(1 == e.which){
-            if($('#p8').hasClass('end_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('star_point');
-                $('#p8').addClass('star_point');
-                star_point = true;
-                sp = 8;
-            }
-        }else if(3 == e.which){
-            if($('#p8').hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('end_point');
-                $('#p8').addClass('end_point');
-                end_point = true;
-                ep = 8;
-                $('#info li:nth-child(2) span').text('H');
-            }
-        }
-    });
-    $('#p9').on('mousedown',function(e){
-        if(1 == e.which){
-            if($('#p9').hasClass('end_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('star_point');
-                $('#p9').addClass('star_point');
-                star_point = true;
-                sp = 9;
-            }
-        }else if(3 == e.which){
-            if($('#p9').hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('end_point');
-                $('#p9').addClass('end_point');
-                end_point = true;
-                ep = 9;
-                $('#info li:nth-child(2) span').text('I');
-            }
-        }
-    });
-    $('#p10').on('mousedown',function(e){
-        if(1 == e.which){
-            if($('#p10').hasClass('end_point')){
-                alert('起點和終點不能在同處');
-            }else{
-                $('.st1').removeClass('star_point');
-                $('#p10').addClass('star_point');
-                star_point = true;
-                sp = 10;
-            }
-        }else if(3 == e.which){
-            if($('#p10').hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('end_point');
-                $('#p10').addClass('end_point');
-                end_point = true;
-                ep = 10;
-            }
-        }
-    });
-    $('#p11').on('mousedown',function(e){
-        if(1 == e.which){
-            if($('#p11').hasClass('end_point')){
-                alert('起點和終點不能在同處');
-            }else{
-                $('.st1').removeClass('star_point');
-                $('#p11').addClass('star_point');
-                star_point = true
-                sp = 11
-            }
-        }else if(3 == e.which){
-            if($('#p11').hasClass('star_point')){
-                alert('起點和終點不能是同處')
-            }else{
-                $('.st1').removeClass('end_point');
-                $('#p11').addClass('end_point');
-                end_point = true
-                ep = 11
-            }
-        }
-    });
-//------------------------------------------
-    setInterval(function(){
-        if(star_point==true && end_point ==true){
-            go(sp,ep);
-        }
-    },100)
-    function event(n,e){
-        if(n == 1){
-            $('#event_d').fadeIn(400);
-            $('#icon_d').fadeIn(400);
-            if(e==1){
-                $('#icon_d .acc').addClass('acc_event');
-                $('#icon_d .acc').stop().fadeIn(400);
-            }else if(e==2){
-                $('#icon_d .rain').addClass('rain_event');
-                $('#icon_d .rain').stop().fadeIn(400);
-            }else if(e==3){
-                $('#icon_d .jam').addClass('jam_event');
-                $('#icon_d .jam').stop().fadeIn(400);
-            }
-        }
-        if(n == 2){
-            $('#event_c').fadeIn(400);
-            $('#icon_c').fadeIn(400);
-            if(e==1){
-                $('#info li:nth-child(4) span').text('車禍');
-                $('#icon_c .acc').addClass('acc_event');
-                $('#icon_c .acc').stop().fadeIn(400);
-            }else if(e==2){
-                $('#icon_c .rain').addClass('rain_event');
-                $('#icon_c .rain').stop().fadeIn(400);
-            }else if(e==3){
-                $('#icon_c .jam').addClass('jam_event');
-                $('#icon_c .jam').stop().fadeIn(400);
-            }
+`
+var database = JSON.parse(data_json);
+var path_len_data = {
+    "1_5": 2, "5_1": 2,
+    "1_2": 2, "2_1": 2,
+    "3_2": 1, "2_3": 1,
+    "3_2": 1, "2_3": 1,
+    "3_4": 1, "4_3": 1,
+    "3_8": 1.5, "8_3": 1.5,
+    "4_7": 1.5, "7_4": 1.5,
+    "6_7": 1, "7_6": 1,
+    "10_7": 1, "7_10": 1,
+    "11_8": 1, "8_11": 1,
+    "11_10": 1, "10_11": 1,
+    "9_6": 1, "6_9": 1,
+    "9_10": 1, "10_9": 1,
+    "5_6": 0.5, "6_5": 0.5
+}
+console.log(database)
 
-        }
-        if(n == 3){
-            $('#event_g').fadeIn(400);
-            $('#icon_g').fadeIn(400);
-            if(e==1){
-                $('#icon_g .acc').addClass('acc_event');
-                $('#icon_g .acc').stop().fadeIn(400);
-            }else if(e==2){
-                $('#icon_g .rain').addClass('rain_event');
-                $('#icon_g .rain').stop().fadeIn(400);
-            }else if(e==3){
-                $('#info li:nth-child(4) span').text('塞車');
-                $('#icon_g .jam').addClass('jam_event');
-                $('#icon_g .jam').stop().fadeIn(400);
-            }
+//------------ 每個事件的時間長度 ---------
+const _acc = 100;
+const _rain = 2;
+const _jam = 5;
+//--------------------------------------
+var _random_number//事件發生地點的編號容器
+var _random_event//事件種類的編號容器
 
-        }
-        if(n == 4){
-            $('#event_e').fadeIn(400);
-            $('#icon_e').fadeIn(400);
-            if(e==1){
-                $('#icon_e .acc').addClass('acc_event');
-                $('#icon_e .acc').stop().fadeIn(400);
-            }else if(e==2){
-                $('#icon_e .rain').addClass('rain_event');
-                $('#icon_e .rain').stop().fadeIn(400);
-            }else if(e==3){
-                $('#icon_e .jam').addClass('jam_event');
-                $('#icon_e .jam').stop().fadeIn(400);
-            }
+var star_point = false;//起點是否被設定了
+var end_point = false;//終點是否被設定了
+//--------------------------------------
+var sumA = 0
+var sumB = 0
+var eplace = []
+var etype = ''
+//--------------------------------------
+info4 = $('#info li:nth-child(4) span');
+info3 = $('#info li:nth-child(3) span');
+info2 = $('#info li:nth-child(2) span');
+info1 = $('#info li:nth-child(1) span');
+//--------------------------------------
+function calculate_time(n, e){
+    eplace = []
+    if(n==1){//D
+        eplace.push('1_5');
+        eplace.push('5_1');
+    }
+    if (n == 2) {//C
+        eplace.push('1_2');
+        eplace.push('2_1');
+    }
+    if (n == 3) {//G
+        eplace.push('4_7');
+        eplace.push('7_4');
+    }
+    if (n == 4) {//E
+        eplace.push('3_8');
+        eplace.push('8_3');
+    }
+    if (n == 5) {//K
+        eplace.push('9_10');
+        eplace.push('10_9');
+    }
+    if (e == 1) { etype = 'acc' }
+    if (e == 2) { etype = 'rain' }
+    if (e == 3) { etype = 'jam' }
+}
+function go(s, e){//當起點和終點都設定完成時
+    var planA = database[`${s}_to_${e}`][1][0]
+    var planB = database[`${s}_to_${e}`][2][0]
+    for (var i = 1; i < planA.length; i++) { 
+        sumA += path_len_data[`${planA[i-1]}_${planA[i]}`];
+        if (eplace.includes(`${planA[i-1]}_${planA[i]}`) && etype == 'acc') { sumA += _acc; }
+        if (eplace.includes(`${planA[i-1]}_${planA[i]}`) && etype == 'rain') { sumA += _rain; }
+        if (eplace.includes(`${planA[i-1]}_${planA[i]}`) && etype == 'jam') { sumA += _jam; }
+    }
+    for (var i = 1; i < planB.length; i++) { 
+        sumB += path_len_data[`${planB[i-1]}_${planB[i]}`];
+        if (eplace.includes(`${planB[i-1]}_${planB[i]}`) && etype == 'acc') { sumB += _acc; }
+        if (eplace.includes(`${planB[i - 1]}_${planB[i]}`) && etype == 'rain') {sumB += _rain;}
+        if (eplace.includes(`${planB[i-1]}_${planB[i]}`) && etype == 'jam') { sumB += _jam; }
+    }
+    if (sumA>sumB){for (var i=1;i<planB.length; i++) {$(`#road_block${planB[i]},.r${planB[i-1]}_${planB[i]}`).addClass('path');}info3.text(sumB);}
+    if (sumA==sumB){
+        let rd = Math.floor(Math.random() * 2 + 1);
+        if(rd==1){for (var i=1;i<planB.length; i++) {$(`#road_block${planB[i]},.r${planB[i-1]}_${planB[i]}`).addClass('path');}info3.text(sumB);}
+        if(rd==2){for (var i=1;i<planA.length; i++) {$(`#road_block${planA[i]},.r${planA[i-1]}_${planA[i]}`).addClass('path');}info3.text(sumA);}
+    }
+    if (sumB>sumA){for (var i=1;i<planA.length; i++) {$(`#road_block${planA[i]},.r${planA[i-1]}_${planA[i]}`).addClass('path');}info3.text(sumA);}
+    sumA = 0;
+    sumB = 0;
+}
+function rndm(){
+    $('.star_point').removeClass('star_point');//把起點清除
+    $('.end_point').removeClass('end_point');//把終點清除
+    star_point = false; //起點編號: 未設定
+    end_point = false; //終點編號: 未設定
+    $('.path').removeClass('path');//把路徑清除
+    $('.event').stop().fadeOut(300);//清除事件point圖標
+    $('.svg_icon').stop().fadeOut(300);//清除事件種類圖標
+    $('.acc').stop().fadeOut(300);//清除 車禍 事件圖標
+    $('.rain').stop().fadeOut(300);//清除 下雨 事件圖標
+    $('.jam').stop().fadeOut(300);//清除 塞車 事件圖標
+    $('.svg_icon').removeClass('acc_event rain_event jam_event');//清除事件種類圖標的顏色
+    info4.text(' ');//清空資訊欄位
+    info3.text(' ');//清空資訊欄位
+    info2.text(' ');//清空資訊欄位
+    info1.text(' ');//清空資訊欄位
+}
 
-        }
-        if(n == 5){
-            $('#event_k').fadeIn(400);
-            $('#icon_k').fadeIn(400);
-            if(e==1){
-                $('#icon_k .acc').addClass('acc_event');
-                $('#icon_k .acc').stop().fadeIn(400);
-            }else if(e==2){
-                $('#info li:nth-child(4) span').text('下雨');
-                $('#icon_k .rain').addClass('rain_event');
-                $('#icon_k .rain').stop().fadeIn(400);
-            }else if(e==3){
-                $('#icon_k .jam').addClass('jam_event');
-                $('#icon_k .jam').stop().fadeIn(400);
+$(document).ready(()=>{
+    $(document).bind("contextmenu",function(){return false;});//阻擋右鍵選單出現
+    var sp = 0//起點編號
+    var ep = 0//終點編號
+    var count = 0
+    $('.st1').mousedown(function (e) {//設定起點 和 終點
+        var point_number = $(this).attr('data-number');
+        if (1 == e.which) {//點左鍵 ( 設定起點 )
+            if($(`#p${point_number}`).hasClass('end_point')){
+                alert('起點和終點不能是同處')
+            }else{
+                $('.st1').removeClass('star_point');
+                $(`#p${point_number}`).addClass('star_point');
+                star_point = true;
+                sp = point_number;
+                info1.text(`p${point_number}`);
             }
-
+        } else if (3 == e.which) {//點右鍵 ( 設定終點 )
+            if ($(`#p${point_number}`).hasClass('star_point')){
+                alert('起點和終點不能是同處')
+            }else{
+                $('.st1').removeClass('end_point');
+                $(`#p${point_number}`).addClass('end_point');
+                end_point = true;
+                ep = point_number;
+                info2.text(`p${point_number}`);
+            }
+        }
+        if (star_point == true && end_point == true) { go(sp, ep); }
+    });
+//------------------------------------
+    function event_type(n, e){//顯示事件圖標 n=哪一個地點 e=哪一個事件
+        if (e == 1) {//車禍
+            info4.text('車禍');
+            $(`#${n} .acc`).addClass('acc_event');
+            $(`#${n} .acc`).stop().fadeIn(400);
+        } else if (e == 2) {//下雨
+            info4.text('下雨');
+            $(`#${n} .rain`).addClass('rain_event');
+            $(`#${n} .rain`).stop().fadeIn(400);
+        } else if (e == 3) {//塞車
+            info4.text('塞車');
+            $(`#${n} .jam`).addClass('jam_event');
+            $(`#${n} .jam`).stop().fadeIn(400);
         }
     }
-    // setInterval(function(){
-    //     $('.event').stop().fadeOut(300);
-    //     $('.svg_icon').stop().fadeOut(300);
-    //     $('.acc').stop().fadeOut(300);
-    //     $('.rain').stop().fadeOut(300);
-    //     $('.jam').stop().fadeOut(300);
-    //     $('.svg_icon').removeClass('acc_event rain_event jam_event');
-    //     _random_number = Math.floor(Math.random()*5 + 1);
-    //     _random_event = Math.floor(Math.random()*3 + 1);
-    //     _random_number = 2
-    //     _random_event = 1
-    //     //c > d > g > e > k
-    //     event(_random_number,_random_event)
-    // },5000)
-    var count = 0
-    $('#p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11').fadeOut(100);
+    function event(n, e) {//隨機事件 n=哪一個地點 e=哪一個事件
+        if (n == 1) { $('#event_d,#icon_d').fadeIn(400); event_type('icon_d',e)}//事件發生在 D
+        if (n == 2) { $('#event_c,#icon_c').fadeIn(400); event_type('icon_c',e)}//事件發生在 C
+        if (n == 3) { $('#event_g,#icon_g').fadeIn(400); event_type('icon_g',e)}//事件發生在 G
+        if (n == 4) { $('#event_e,#icon_e').fadeIn(400); event_type('icon_e',e)}//事件發生在 E
+        if (n == 5) { $('#event_k,#icon_k').fadeIn(400); event_type('icon_k',e)}//事件發生在 K
+    }
+//------------------------------------
+    $('.st1').hide();
     $('main aside button').on('click',function(){
-        count++
-        if(count==1){
+        count++;
+        if (count == 1) {
             $('#p1,#p2').fadeIn(400)
-            setTimeout(function(){
-                $('.event').stop().fadeOut(300);
-                $('.svg_icon').stop().fadeOut(300);
-                $('.acc').stop().fadeOut(300);
-                $('.rain').stop().fadeOut(300);
-                $('.jam').stop().fadeOut(300);
-                $('.svg_icon').removeClass('acc_event rain_event jam_event');
-                _random_number = 2
-                _random_event = 1
-                event(_random_number,_random_event)
-            },100)
+            rndm();
+            _random_number = 2;
+            _random_event = 1;
+            event(_random_number, _random_event);
+            calculate_time(_random_number, _random_event);
         }
-        if(count==2){
-            $('#p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11').hide();
+        if (count == 2) {
+            $('.st1').hide();
             $('#p6,#p8').fadeIn(400)
-            $('.event').stop().fadeOut(300);
-            $('.svg_icon').stop().fadeOut(300);
-            $('.acc').stop().fadeOut(300);
-            $('.rain').stop().fadeOut(300);
-            $('.jam').stop().fadeOut(300);
-            $('.svg_icon').removeClass('acc_event rain_event jam_event');
-            $('#info li:nth-child(4) span').text(' ');
-            $('#info li:nth-child(3) span').text(' ');
-            $('#info li:nth-child(2) span').text(' ');
-            $('#info li:nth-child(1) span').text(' ');
+            rndm();
             _random_number = 5;
             _random_event = 2;
-            event(_random_number,_random_event);
+            event(_random_number, _random_event);
+            calculate_time(_random_number, _random_event);
         }
-        if(count==3){
-            $('#p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11').hide();
+        if (count == 3) {
+            $('.st1').hide();
             $('#p3,#p9').fadeIn(400)
-            $('.event').stop().fadeOut(300);
-            $('.svg_icon').stop().fadeOut(300);
-            $('.acc').stop().fadeOut(300);
-            $('.rain').stop().fadeOut(300);
-            $('.jam').stop().fadeOut(300);
-            $('.svg_icon').removeClass('acc_event rain_event jam_event');
-            $('#info li:nth-child(4) span').text(' ');
-            $('#info li:nth-child(3) span').text(' ');
-            $('#info li:nth-child(2) span').text(' ');
-            $('#info li:nth-child(1) span').text(' ');
+            rndm();
             _random_number = 3;
-            _random_event = 3;
-            event(_random_number,_random_event);
+            _random_event =3;
+            event(_random_number, _random_event);
+            calculate_time(_random_number, _random_event);
         }
-        if(count==4){
-            $('#p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11').show();
-            $('.star_point').removeClass('star_point');
-            $('.end_point').removeClass('end_point');
-            $('.path').removeClass('path');
-            $('.event').stop().fadeOut(300);
-                $('.svg_icon').stop().fadeOut(300);
-                $('.acc').stop().fadeOut(300);
-                $('.rain').stop().fadeOut(300);
-                $('.jam').stop().fadeOut(300);
-                $('.svg_icon').removeClass('acc_event rain_event jam_event');
-                $('#info li:nth-child(4) span').text(' ');
-                $('#info li:nth-child(3) span').text(' ');
-                $('#info li:nth-child(2) span').text(' ');
-                $('#info li:nth-child(1) span').text(' ');
-                _random_number = Math.floor(Math.random()*5 + 1);
-                _random_event = Math.floor(Math.random()*3 + 1);
-                event(_random_number,_random_event);
-            setInterval(function(){
-                $('.event').stop().fadeOut(300);
-                $('.svg_icon').stop().fadeOut(300);
-                $('.acc').stop().fadeOut(300);
-                $('.rain').stop().fadeOut(300);
-                $('.jam').stop().fadeOut(300);
-                $('.svg_icon').removeClass('acc_event rain_event jam_event');
-                $('#info li:nth-child(4) span').text(' ');
-                $('#info li:nth-child(3) span').text(' ');
-                $('#info li:nth-child(2) span').text(' ');
-                $('#info li:nth-child(1) span').text(' ');
-                _random_number = Math.floor(Math.random()*5 + 1);
-                _random_event = Math.floor(Math.random()*3 + 1);
-                event(_random_number,_random_event);
-            },5000)
+        if (count == 4) {
+            $('.st1').show();
+            rndm();
+            _random_number = Math.floor(Math.random() * 5 + 1);
+            _random_event = Math.floor(Math.random() * 3 + 1);
+            event(_random_number, _random_event);
+            calculate_time(_random_number, _random_event);
+        }
+        if (count > 4) {
+            rndm();
+            _random_number = Math.floor(Math.random() * 5 + 1);
+            _random_event = Math.floor(Math.random() * 3 + 1);
+            event(_random_number, _random_event);
+            calculate_time(_random_number, _random_event);
         }
     })
 })
